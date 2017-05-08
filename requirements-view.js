@@ -1,3 +1,3 @@
-function generate(element){
+function generateRequirementsView(element){
 	console.log("requirements view loaded");
 }

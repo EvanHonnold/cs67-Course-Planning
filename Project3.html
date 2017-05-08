@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title> Course Planning </title>
+
+<script type="text/javascript" src="course-browser.js"></script>
+<script type="text/javascript" src="current-plan.js"></script>
+<script type="text/javascript" src="requirements-view.js"></script>
+
+<script>
+window.onload = function(){
+var doc = document.getElementById("left_part");
+generateCurrentPlan(doc);
+var doc2 = document.getElementById("middle_part");
+generateCurrentPlan(doc2);
+var doc3 = document.getElementById("right_part");
+generateCurrentPlan(doc3);
+}
+</script>
+
+</head>
+
+<body>
+<div id = "left_part"> </div>
+<div id = "middle_part"> </div>
+<div id = "right_part"> </div>
+
+</body>
+
+</html>

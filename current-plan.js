@@ -1,3 +1,3 @@
-function generate(element){
+function generateCurrentPlan(element){
 	console.log("current plan loaded");
 }

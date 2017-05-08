@@ -1,7 +1,7 @@
 Proposed way to divide work for the project:
 
 Phase 1: Create the HTML/CSS visual interface
-  a) introductory information forms (i.e. what's your major, what classes have you taken)
+  a) AMARA - introductory information forms (i.e. what's your major, what classes have you taken)
   b) EVAN - left side of the three-part main screen (current plan)
   c) middle part of the main screen (course browser)
   d) right side of the main screen (requirements view)

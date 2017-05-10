@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title> Course Planning </title>
+
+<style>
+    body {
+        margin:2vh;
+    }
+    .screen-section {
+        margin-left:0px;
+        margin-right:0px;
+        background-color: #ECEFF1;
+        height: 95.5vh;
+        width: 31.9vw;
+        display:inline-block;
+    }
+</style>
+
+<script type="text/javascript" src="course-browser.js"></script>
+<script type="text/javascript" src="current-plan.js"></script>
+<script type="text/javascript" src="requirements-view.js"></script>
+
+<script>
+window.onload = function(){
+
+    var screenSections = document.getElementsByClassName("screen-section");
+    
+    // these functions are defined in the three scripts 
+    // imported in the HTML above.
+    generateCurrentPlan(screenSections[0]);
+    generateCourseBrowser(screenSections[1]);
+    generateRequirementsView(screenSections[2]);
+
+    // colors the screen sections differently 
+    // (this is temporary - just to show where they are):
+
+
+}
+</script>
+
+</head> 
+
+<body>
+    <span class="screen-section"> </span>
+    <span class="screen-section"> </span>
+    <span class="screen-section"> </span>
+
+</body>
+
+</html>

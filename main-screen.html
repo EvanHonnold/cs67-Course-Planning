@@ -5,17 +5,35 @@
 <title> Course Planning </title>
 
 <style>
-    body {
-        margin:2vh;
+    html, body {
+        width: 100%;
+        height: 100%;
     }
+
+    body{
+        margin: 0;
+        display: table
+    }
+
+    body>div {
+        display: table-cell; 
+        text-align: center; /* horizontal */
+        vertical-align: middle; /* vertical */
+    }
+
+    .wrapper {
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-direction:column;
+    }
+
     .screen-section {
-        margin-left:0px;
-        margin-right:0px;
         background-color: #ECEFF1;
-        height: 95vh;
-        width: 31.9vw;
-        display:inline-block;
+        flex-grow:1;
+        flex-basis:0;
     }
+
 </style>
 
 <script type="text/javascript" src="course-browser.js"></script>
@@ -43,10 +61,24 @@ window.onload = function(){
 </head> 
 
 <body>
-    <span class="screen-section"> </span>
-    <span class="screen-section"> </span>
-    <span class="screen-section"> </span>
+    <div>
+        <div class="wrapper">
+            <div style="height:10px"></div>
+            <div style="display:flex; flex-grow:1;">
+                <div style="width:10px"></div>
+                <div class="screen-section"></div>
+                <div style="width:7px"></div>
+                <div class="screen-section"></div>
+                <div style="width:7px"></div>
+                <div class="screen-section"></div>
+                <div style="width:10px"></div>
+            </div>
+            <div style="height:10px"></div>
 
+
+
+        </div>
+    </div>
+    
 </body>
-
 </html>

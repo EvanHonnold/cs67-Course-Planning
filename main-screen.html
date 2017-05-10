@@ -12,7 +12,7 @@
         margin-left:0px;
         margin-right:0px;
         background-color: #ECEFF1;
-        height: 95.5vh;
+        height: 95vh;
         width: 31.9vw;
         display:inline-block;
     }
@@ -29,9 +29,9 @@ window.onload = function(){
     
     // these functions are defined in the three scripts 
     // imported in the HTML above.
-    generateCurrentPlan(screenSections[0]);
-    generateCourseBrowser(screenSections[1]);
-    generateRequirementsView(screenSections[2]);
+    generateCurrentPlan(screenSections[0], document);
+    generateCourseBrowser(screenSections[1], document);
+    generateRequirementsView(screenSections[2], document);
 
     // colors the screen sections differently 
     // (this is temporary - just to show where they are):

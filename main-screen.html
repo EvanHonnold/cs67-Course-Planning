@@ -29,12 +29,14 @@
     }
 
     .screen-section {
-        background-color: #ECEFF1;
+        background-color: #F5F5F5;
         flex-grow:1;
         flex-basis:0;
     }
 
 </style>
+
+<link rel="stylesheet" type="text/css" href="main-screen.css">
 
 <script type="text/javascript" src="course-browser.js"></script>
 <script type="text/javascript" src="current-plan.js"></script>
@@ -47,9 +49,9 @@ window.onload = function(){
     
     // these functions are defined in the three scripts 
     // imported in the HTML above.
-    generateCurrentPlan(screenSections[0], document);
-    generateCourseBrowser(screenSections[1], document);
-    generateRequirementsView(screenSections[2], document);
+    generateCurrentPlan(screenSections[0]);
+    generateCourseBrowser(screenSections[1]);
+    generateRequirementsView(screenSections[2]);
 
     // colors the screen sections differently 
     // (this is temporary - just to show where they are):

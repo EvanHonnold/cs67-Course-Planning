@@ -1,0 +1,21 @@
+/**
+
+Written by Evan Honnold
+
+This file contains some of the CSS for the main
+screen.  It doesn't contain all the CSS - some is inline 
+in the HTML document.  This CSS is separated because
+it applies to the features inside the three panels,
+which may need to be edited more often than we'd want
+main-screen.html to be changed.  
+
+**/
+
+h1 {
+   color:#1B5E20;
+   font-size: 170%;
+   font-family: 'ApexSerifBook','Georgia', serif;
+   font-weight: normal;
+   margin-top:0.5em;
+   margin-bottom:0.5em;
+}

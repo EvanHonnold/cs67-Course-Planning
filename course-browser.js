@@ -1,3 +1,3 @@
-function generateCourseBrowser(element, document){
+function generateCourseBrowser(element){
 	console.log("course browser loaded");
 }

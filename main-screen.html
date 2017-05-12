@@ -5,33 +5,25 @@
 <title> Course Planning </title>
 
 <style>
-    html, body {
-        width: 100%;
-        height: 100%;
+   
+    .section {
+        width:33.3%;
+        min-width:200px;
+        height:100%       
     }
 
-    body{
-        margin: 0;
-        display: table
+    .divider {
+        background-color: #C1C1C1;
+        width:1px;
+        min-width:1px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
-    body>div {
-        display: table-cell; 
-        text-align: center; /* horizontal */
-        vertical-align: middle; /* vertical */
-    }
-
-    .wrapper {
-        width:100%;
-        height:100%;
+    body {
         display:flex;
-        flex-direction:column;
-    }
-
-    .screen-section {
-        background-color: #F5F5F5;
-        flex-grow:1;
-        flex-basis:0;
+        margin:0px;
+        height:100vh;
     }
 
 </style>
@@ -45,7 +37,7 @@
 <script>
 window.onload = function(){
 
-    var screenSections = document.getElementsByClassName("screen-section");
+    var screenSections = document.getElementsByClassName("section");
     
     // these functions are defined in the three scripts 
     // imported in the HTML above.
@@ -63,21 +55,12 @@ window.onload = function(){
 </head> 
 
 <body>
-    <div>
-        <div class="wrapper">
-            <div style="height:10px"></div>
-            <div style="display:flex; flex-grow:1;">
-                <div style="width:10px"></div>
-                <div class="screen-section"></div>
-                <div style="width:7px"></div>
-                <div class="screen-section"></div>
-                <div style="width:7px"></div>
-                <div class="screen-section"></div>
-                <div style="width:10px"></div>
-            </div>
-            <div style="height:10px"></div>
-        </div>
-    </div>
     
+<div class="section"></div>
+<div class="divider"></div>
+<div class="section"></div>
+<div class="divider"></div>
+<div class="section"></div>
+
 </body>
 </html>

@@ -12,10 +12,40 @@ main-screen.html to be changed.
 **/
 
 h1 {
-   color:#1B5E20;
+   color:#333;
    font-size: 170%;
    font-family: 'ApexSerifBook','Georgia', serif;
    font-weight: normal;
    margin-top:0.5em;
    margin-bottom:0.5em;
+}
+
+/* In the "Current Plan" section, holds the name of a term
+and the classes listed under that term */
+.term-listing-container {
+    display:flex;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+/* The thing that says, e.g., "Fall 2017" */
+.term-listing-term-name {
+    font-size: 100%;
+    color: #333;
+    font-family: 'ApexNewMed','Arial',Sans-serif;
+    text-transform: uppercase;
+    font-weight:normal;
+    max-width:50px;
+}
+
+.term-listing-courses-container {
+    background-color: #BDBDBD;
+    flex: 1;
+}
+
+.course-box{
+    background-color: #757575;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
 }

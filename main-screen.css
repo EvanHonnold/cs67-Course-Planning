@@ -58,6 +58,13 @@ and the classes listed under that term */
     overflow: hidden;
 }
 
+
+.info-box{
+    background-color: #757575;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .course-listing-container {
     display:flex;
     padding-left:10px;

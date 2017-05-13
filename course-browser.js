@@ -11,6 +11,11 @@ function generateCourseBrowser(element){
      	"Economics":["ECON 1 - Intro to Economics", "ECON 10 - Statistics", "ECON 35 - Game Theoy"]
 	};
 
+	var courses = document.createElement("div");
+	courses.id = "courseblock"
+	courses.classList.add('course-listing-container');
+	element.appendChild(courses);
+
 	var majorDisplay = getMajorDepartment(courses_dictionary, "Computer Science");
 	element.appendChild(majorDisplay);
 
@@ -29,7 +34,7 @@ function cs(element) {
 	};
 
 	var majorDisplay = getMajorDepartment(courses_dictionary, "Computer Science");
-	document.getElementById("courseblock").appendChild(majorDisplay);
+	//document.getElementById("courseblock").appendChild(majorDisplay);
 }
 
 function psych(element) {
@@ -44,7 +49,7 @@ function psych(element) {
 	};
 
 	var majorDisplay = getMajorDepartment(courses_dictionary, "Psychological and Brain Sciences");
-	document.getElementById("courseblock").appendChild(majorDisplay);
+	//document.getElementById("courseblock").appendChild(majorDisplay);
 }
 
 function econ(element) {
@@ -59,14 +64,11 @@ function econ(element) {
 	};
 
 	var majorDisplay = getMajorDepartment(courses_dictionary, "Economics");
-	document.getElementById("courseblock").appendChild(majorDisplay);
+	///document.getElementById("courseblock").appendChild(majorDisplay);
 }
 
 function getMajorDepartment(dictionary, title){
-	var courses = document.createElement("div");
-	courses.id = "courseblock"
-	courses.classList.add('course-listing-container');
-
+	var courses = document.getElementById('courseblock');
 	var coursesDisplay = document.createElement("div");
 	coursesDisplay.id = "courses"
 	coursesDisplay.classList.add('course-listing-course-container');

@@ -1,13 +1,13 @@
 /**
 
-Written by Evan Honnold
-
 This file contains some of the CSS for the main
 screen.  It doesn't contain all the CSS - some is inline 
-in the HTML document.  This CSS is separated because
-it applies to the features inside the three panels,
-which may need to be edited more often than we'd want
-main-screen.html to be changed.  
+in the HTML document. 
+
+Some other CSS is located in current-plan.css, but
+this shouldn't cause a problem as that CSS uses only
+custom classes as identifiers, so it shouldn't 
+affect the other sections. 
 
 **/
 
@@ -29,36 +29,6 @@ h2 {
    margin-top:0.5em;
    margin-bottom:0.5em;
 }
-
-/* In the "Current Plan" section, holds the name of a term
-and the classes listed under that term */
-.term-listing-container {
-    display:flex;
-    padding-left:10px;
-    padding-right:10px;
-}
-
-/* The thing that says, e.g., "Fall 2017" */
-.term-listing-term-name {
-    font-size: 100%;
-    color: #333;
-    font-family: 'ApexNewMed','Arial',Sans-serif;
-    text-transform: uppercase;
-    font-weight:normal;
-    max-width:50px;
-}
-
-.term-listing-courses-container {
-    background-color: #BDBDBD;
-    flex: 1;
-}
-
-.course-box{
-    background-color: #757575;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
 
 .info-box{
     background-color: #757575;

@@ -1,5 +1,5 @@
 function generateCourseBrowser(element){
-	var section_title = document.createElement("h2");
+	var section_title = document.createElement("h1");
 	var title_text = document.createTextNode("Course Browser");
 	section_title.appendChild(title_text);
 	element.appendChild(section_title);

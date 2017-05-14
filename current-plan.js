@@ -29,9 +29,13 @@ function getTermDisplay(){
 	var container = document.createElement("div");
 	container.classList.add('term-listing-container');
 	var nameDisplay = document.createElement("span");
-	var nameNode = document.createTextNode("Fall 2017");
-	nameDisplay.appendChild(nameNode);
+
+	//nameDisplay.appendChild(nameNode);
 	nameDisplay.classList.add("term-listing-term-name");
+	var nameDisplayText = document.createElement("span");
+	var nameNode = document.createTextNode("Fall 2017");
+	nameDisplayText.appendChild(nameNode);
+	nameDisplay.appendChild(nameDisplayText);
 	container.appendChild(nameDisplay);
 
 	var coursesDisplay = document.createElement("div");

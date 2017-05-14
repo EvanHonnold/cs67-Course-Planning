@@ -31,6 +31,8 @@
 <link rel="stylesheet" type="text/css" href="main-screen.css">
 <link rel="stylesheet" type="text/css" href="current-plan.css">
 
+<link rel="import" href="current-plan.html">
+
 <script type="text/javascript" src="course-browser.js"></script>
 <script type="text/javascript" src="current-plan.js"></script>
 <script type="text/javascript" src="requirements-view.js"></script>
@@ -42,13 +44,18 @@ window.onload = function(){
     
     // these functions are defined in the three scripts 
     // imported in the HTML above.
-    generateCurrentPlan(screenSections[0]);
     generateCourseBrowser(screenSections[1]);
     generateRequirementsView(screenSections[2]);
 
-    // colors the screen sections differently 
-    // (this is temporary - just to show where they are):
-
+    // Evan: I'm now loading my section from another HTML
+    // document instead of creating it dynamically. I think this makes
+    // my section easier to edit.  You won't be able to see my section 
+    // unless you enable CORS in your browser (the following line will
+    // create an error). I can show you how to do this. 
+    var currentPlan = document.querySelector('link[rel="import"]').import.querySelector('body');
+    while (currentPlan.children.length > 0){
+        screenSections[0].appendChild(currentPlan.firstChild);
+    }
 
 }
 </script>

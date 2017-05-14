@@ -57,6 +57,8 @@ h2 {
     cursor: pointer;
     max-width: 150px;
     min-width: 150px;
+    max-height: 110px;
+    min-height: 110px;
 }
 
 /* The container <div> - needed to position the dropdown content */

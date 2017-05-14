@@ -1,0 +1,38 @@
+/**
+
+    Written by Evan Honnold
+
+    This section contains CSS that should apply only to the "current plan"
+    section of the main screen.  To narrow the CSS's scope, I'm only using 
+    custom classes as identifiers. 
+
+**/
+
+/* In the "Current Plan" section, holds the name of a term
+and the classes listed under that term */
+.term-listing-container {
+    display:flex;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+/* The thing that says, e.g., "Fall 2017" */
+.term-listing-term-name {
+    font-size: 100%;
+    color: #333;
+    font-family: 'ApexNewMed','Arial',Sans-serif;
+    text-transform: uppercase;
+    font-weight:normal;
+    max-width:50px;
+}
+
+.term-listing-courses-container {
+    background-color: #BDBDBD;
+    flex: 1;
+}
+
+.course-box{
+    background-color: #757575;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

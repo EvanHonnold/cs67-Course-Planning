@@ -12,29 +12,46 @@
 and the classes listed under that term */
 .term-listing-container {
     display:flex;
-    padding-left:10px;
-    padding-right:10px;
 }
 
 /* The thing that says, e.g., "Fall 2017" */
 .term-listing-term-name {
+    width:65px;
+    padding-right:5px;
+    padding-left:5px;
+    display:flex;
+    flex-direction: column;
+    border-right:1.5px solid;
+    border-color: #333;
+}
+
+.term-listing-term-name-text{
     font-size: 100%;
     color: #333;
     font-family: 'ApexNewMed','Arial',Sans-serif;
     text-transform: uppercase;
     font-weight:normal;
-    max-width:50px;
-    height:50px;
-    text-align: center;
+    text-align:right;
 }
 
 .term-listing-courses-container {
-    background-color: #BDBDBD;
     flex: 1;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    padding-left:5px;
+    padding-right:5px;
 }
 
 .course-box{
-    background-color: #757575;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    background-color: #E0E0E0;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding-left:3px;
+    padding-right:3px;
+    padding-top:2px;
+    padding-bottom:2px;
+    font-family: 'ApexNewBook',Arial,Sans-serif;
+    font-size:85%;
 }

@@ -8,18 +8,19 @@
 function generateCurrentPlan(screenSection, importedHTML){
 
 	// adds in the title
-	screenSection.appendChild(importedHTML.firstChild);
+	screenSection.appendChild(importedHTML.getElementsByTagName("h1")[0]);
 
 	for (var i = 0; i < 5; i++){
-		var newNode = getSingleTermDisplay(importedHTML);
+		var newNode = getSingleTermDisplay(importedHTML, "content");
 		screenSection.appendChild(newNode);
 	}
 
 }
 
-function getSingleTermDisplay(importedHTML){
+function getSingleTermDisplay(importedHTML, termName){
 	var termListingContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
 	var newContainer = termListingContainer.cloneNode(true);
+	newContainer.getElementsByClassName("term-listing-term-name-text")[0].textContent = termName;
 	return newContainer;
 }
 

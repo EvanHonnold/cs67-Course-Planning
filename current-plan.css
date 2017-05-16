@@ -12,6 +12,7 @@
 and the classes listed under that term */
 .term-listing-container {
     display:flex;
+    margin-bottom:5px;
 }
 
 /* The thing that says, e.g., "Fall 2017" */
@@ -43,7 +44,7 @@ and the classes listed under that term */
     padding-right:5px;
 }
 
-.course-box{
+.course-box, .add-fourth-course-btn{
     background-color: #E0E0E0;
     white-space: nowrap;
     overflow:hidden;

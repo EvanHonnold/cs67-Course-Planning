@@ -53,8 +53,9 @@ window.onload = function(){
     // my section easier to edit.  You won't be able to see my section 
     // unless you enable CORS in your browser (the following line will
     // create an error). I can show you how to do this. 
-    var currentPlan = document.querySelector('link[rel="import"]').import.querySelector('body');
-    generateCurrentPlan(screenSections[0], currentPlan);
+    var currentPlanHTML = document.querySelector('link[rel="import"]').import.querySelector('body');
+    var currentPlan = new CurrentPlan(screenSections[0], currentPlanHTML);
+    currentPlan.showTerms(GetTermsForTesting());
 
   /*while (currentPlan.children.length > 0){
         screenSections[0].appendChild(currentPlan.firstChild);

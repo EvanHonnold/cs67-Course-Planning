@@ -4,6 +4,19 @@
  * Currently incomplete
  */
 
+function CurrentPlan(screenSection, importedHTML){
+
+	// adds in the title
+	screenSection.appendChild(importedHTML.getElementsByTagName("h1")[0]);
+
+	this.showTerms = function(terms){
+		if (!terms instanceof Array)
+			console.log("its not an array");
+		else
+			console.log("its an array");
+	}
+
+}
 
 function generateCurrentPlan(screenSection, importedHTML){
 
@@ -11,20 +24,32 @@ function generateCurrentPlan(screenSection, importedHTML){
 	screenSection.appendChild(importedHTML.getElementsByTagName("h1")[0]);
 
 	for (var i = 0; i < 5; i++){
-		var newNode = getSingleTermDisplay(importedHTML, "content");
+		var mTerm = new Term(new Season("spring"), new Number(2017));
+		var newNode = getSingleTermDisplay(importedHTML, mTerm);
 		screenSection.appendChild(newNode);
 	}
 
-	console.log("Creating new season");
-	var mseason = new Season("sdfs");
-
 }
 
-function getSingleTermDisplay(importedHTML, termName){
+function getSingleTermDisplay(importedHTML, term){
+	if (!(term instanceof Term)){
+		throw "must give getSingleTermDisplay a term object";
+	}
+	
 	var termListingContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
 	var newContainer = termListingContainer.cloneNode(true);
-	newContainer.getElementsByClassName("term-listing-term-name-text")[0].textContent = termName;
+	newContainer.getElementsByClassName("term-listing-term-name-text")[0].textContent = term.toString();
 	return newContainer;
+}
+
+function GetTermsForTesting(){
+	var terms = new Array();
+	terms.push(new Term(new Season("winter"), new Number(2016)));
+	terms.push(new Term(new Season("spring"), new Number(2016)));
+	terms.push(new Term(new Season("summer"), new Number(2016)));
+	terms.push(new Term(new Season("fall"), new Number(2016)));
+	terms.push(new Term(new Season("winter"), new Number(2017)));
+	return terms;
 }
 
 /*

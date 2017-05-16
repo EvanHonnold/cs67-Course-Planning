@@ -9,6 +9,7 @@ function CurrentPlan(screenSection, importedHTML){
 	// adds in the title
 	screenSection.appendChild(importedHTML.getElementsByTagName("h1")[0]);
 
+	// takes a list of terms and adds html to display them
 	this.showTerms = function(terms){
 		if (!(terms instanceof Array))
 			throw "Current Plan must be created with an array of Term objects";
@@ -26,7 +27,7 @@ function CurrentPlan(screenSection, importedHTML){
 	 *  and check whether the mouse is over any of them.  If it is, that slot 
 	 *  will temporarily change color. 
 	 */
-	this.hoverDraggedClass = function(mouseX, mouseY){
+	this.notifyHoveringClass = function(mouseX, mouseY){
 
 	}
 
@@ -36,7 +37,7 @@ function CurrentPlan(screenSection, importedHTML){
 	 *  will be moved into the slot, and the function will return true. Otherwise, 
 	 *  the function will return false. 
 	 */
-	this.dropDraggedClass = function(mouseX, mouseY){
+	this.notifyDraggedClass = function(mouseX, mouseY, courseName){
 
 	}
 

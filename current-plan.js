@@ -5,6 +5,7 @@
  */
 
 function CurrentPlan(screenSection, importedHTML){
+	var currentPlan = this;
 
 	// adds in the title
 	screenSection.appendChild(importedHTML.getElementsByTagName("h1")[0]);
@@ -13,11 +14,12 @@ function CurrentPlan(screenSection, importedHTML){
 	this.showTerms = function(terms){
 		if (!(terms instanceof Array))
 			throw "Current Plan must be created with an array of Term objects";
+		currentPlan.termDisplays = new Array();
 		for (var i = 0; i < terms.length; i++){
 			if (!(terms[i] instanceof Term))
 				throw "Current Plan was given an array containing an object that isn't a Term";
-			var newTermDisplay = getSingleTermDisplay(importedHTML, terms[i]);
-			screenSection.appendChild(newTermDisplay);
+			var newTermDisplay = new SingleTermDisplay(terms[i]);
+			currentPlan.termDisplays.push(newTermDisplay);
 		}
 	}
 
@@ -28,7 +30,10 @@ function CurrentPlan(screenSection, importedHTML){
 	 *  will temporarily change color. 
 	 */
 	this.notifyHoveringClass = function(mouseX, mouseY){
-
+		if (typeof currentPlan.termDisplays !== 'undefined')
+			return;
+		for (var i = 0; i < currentPlan.termDisplays.length; i++)
+			currentPlan.termDisplays[i].notifyHoveringClass(mouseX, mouseY);
 	}
 
 	/**
@@ -37,21 +42,36 @@ function CurrentPlan(screenSection, importedHTML){
 	 *  will be moved into the slot, and the function will return true. Otherwise, 
 	 *  the function will return false. 
 	 */
-	this.notifyDraggedClass = function(mouseX, mouseY, courseName){
+	this.notifyDroppedClass = function(mouseX, mouseY, courseName){
 
 	}
 
-	function getSingleTermDisplay(importedHTML, term){
-		if (!(term instanceof Term)){
-			throw "must give getSingleTermDisplay a term object";
-		}
-		
+	function SingleTermDisplay(term){
 		var termListingContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
 		var newContainer = termListingContainer.cloneNode(true);
 		newContainer.getElementsByClassName("term-listing-term-name-text")[0].textContent = term.toString();
-		return newContainer;
+		screenSection.appendChild(newContainer);
+
+		this.notifyHoveringClass = function(mouseX, mouseY){
+
+		}
 	}
 }
+
+
+
+
+function GetTermsForTesting(){
+	var terms = new Array();
+	terms.push(new Term(new Season("winter"), new Number(2016)));
+	terms.push(new Term(new Season("spring"), new Number(2016)));
+	terms.push(new Term(new Season("summer"), new Number(2016)));
+	terms.push(new Term(new Season("fall"), new Number(2016)));
+	terms.push(new Term(new Season("winter"), new Number(2017)));
+	return terms;
+}
+
+/*
 
 function generateCurrentPlan(screenSection, importedHTML){
 
@@ -67,18 +87,6 @@ function generateCurrentPlan(screenSection, importedHTML){
 }
 
 
-
-function GetTermsForTesting(){
-	var terms = new Array();
-	terms.push(new Term(new Season("winter"), new Number(2016)));
-	terms.push(new Term(new Season("spring"), new Number(2016)));
-	terms.push(new Term(new Season("summer"), new Number(2016)));
-	terms.push(new Term(new Season("fall"), new Number(2016)));
-	terms.push(new Term(new Season("winter"), new Number(2017)));
-	return terms;
-}
-
-/*
 function generateCurrentPlan(element){
 
 	var section_title = document.createElement("h1");

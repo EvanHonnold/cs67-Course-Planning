@@ -10,12 +10,46 @@ function CurrentPlan(screenSection, importedHTML){
 	screenSection.appendChild(importedHTML.getElementsByTagName("h1")[0]);
 
 	this.showTerms = function(terms){
-		if (!terms instanceof Array)
-			console.log("its not an array");
-		else
-			console.log("its an array");
+		if (!(terms instanceof Array))
+			throw "Current Plan must be created with an array of Term objects";
+		for (var i = 0; i < terms.length; i++){
+			if (!(terms[i] instanceof Term))
+				throw "Current Plan was given an array containing an object that isn't a Term";
+			var newTermDisplay = getSingleTermDisplay(importedHTML, terms[i]);
+			screenSection.appendChild(newTermDisplay);
+		}
 	}
 
+	/**
+	 *  This function should be called whenever the mouse moves and a class
+	 *  is being dragged. The function will check through all the course slots 
+	 *  and check whether the mouse is over any of them.  If it is, that slot 
+	 *  will temporarily change color. 
+	 */
+	this.hoverDraggedClass = function(mouseX, mouseY){
+
+	}
+
+	/**
+	 * 	This function should be called whenever a dragged class is dropped. 
+	 *  It'll check whether the mouse is over a slot.  If it is, the class 
+	 *  will be moved into the slot, and the function will return true. Otherwise, 
+	 *  the function will return false. 
+	 */
+	this.dropDraggedClass = function(mouseX, mouseY){
+
+	}
+
+	function getSingleTermDisplay(importedHTML, term){
+		if (!(term instanceof Term)){
+			throw "must give getSingleTermDisplay a term object";
+		}
+		
+		var termListingContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
+		var newContainer = termListingContainer.cloneNode(true);
+		newContainer.getElementsByClassName("term-listing-term-name-text")[0].textContent = term.toString();
+		return newContainer;
+	}
 }
 
 function generateCurrentPlan(screenSection, importedHTML){
@@ -31,16 +65,7 @@ function generateCurrentPlan(screenSection, importedHTML){
 
 }
 
-function getSingleTermDisplay(importedHTML, term){
-	if (!(term instanceof Term)){
-		throw "must give getSingleTermDisplay a term object";
-	}
-	
-	var termListingContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
-	var newContainer = termListingContainer.cloneNode(true);
-	newContainer.getElementsByClassName("term-listing-term-name-text")[0].textContent = term.toString();
-	return newContainer;
-}
+
 
 function GetTermsForTesting(){
 	var terms = new Array();

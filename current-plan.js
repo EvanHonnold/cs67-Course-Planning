@@ -15,6 +15,9 @@ function generateCurrentPlan(screenSection, importedHTML){
 		screenSection.appendChild(newNode);
 	}
 
+	console.log("Creating new season");
+	var mseason = new Season("sdfs");
+
 }
 
 function getSingleTermDisplay(importedHTML, termName){

@@ -53,9 +53,11 @@ window.onload = function(){
     // unless you enable CORS in your browser (the following line will
     // create an error). I can show you how to do this. 
     var currentPlan = document.querySelector('link[rel="import"]').import.querySelector('body');
-    while (currentPlan.children.length > 0){
+    generateCurrentPlan(screenSections[0], currentPlan);
+
+  /*while (currentPlan.children.length > 0){
         screenSections[0].appendChild(currentPlan.firstChild);
-    }
+    } */
 
 }
 </script>

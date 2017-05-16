@@ -5,7 +5,25 @@
  */
 
 
+function generateCurrentPlan(screenSection, importedHTML){
 
+	// adds in the title
+	screenSection.appendChild(importedHTML.firstChild);
+
+	for (var i = 0; i < 5; i++){
+		var newNode = getSingleTermDisplay(importedHTML);
+		screenSection.appendChild(newNode);
+	}
+
+}
+
+function getSingleTermDisplay(importedHTML){
+	var termListingContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
+	var newContainer = termListingContainer.cloneNode(true);
+	return newContainer;
+}
+
+/*
 function generateCurrentPlan(element){
 
 	var section_title = document.createElement("h1");
@@ -22,7 +40,9 @@ function generateCurrentPlan(element){
 
 	console.log("current plan loaded");
 }
+*/
 
+/*
 // for testing, until this script can accept term 
 // objects to define what terms will be shown on the plan:
 function getTermDisplay(){
@@ -72,3 +92,4 @@ function getTermDisplay(){
 
 	return container;
 }
+*/

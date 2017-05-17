@@ -11,7 +11,12 @@ function generateCourseBrowser(element){
 	info.id = "popup";
 	info.classList.add("course-info-container");
 	element.appendChild(info);
-	info.style.display = 'block';
+	info.style.display = 'none';
+	var detail = document.createElement("div");
+	detail.style.backgroundColor = "grey";
+	detail.style.margin = "5px";
+	var text = document.createTextNode("Course Detail");
+	detail.appendChild(text);
 	var coursetitle = document.createElement("div");
 	coursetitle.id = "coursetitle";
 	var courseinfo = document.createElement("div");
@@ -30,6 +35,7 @@ function generateCourseBrowser(element){
 	courseinstructor.classList.add("info-box");
 	coursedistribs.classList.add("info-box");
 	courseprereqs.classList.add("info-box");
+	info.appendChild(detail);
 	info.appendChild(coursetitle);
 	info.appendChild(courseinfo);
 	info.appendChild(courseinstructor);
@@ -208,7 +214,6 @@ function getMajorDepartment(department){
 			//var distribs = document.createTextNode("Distributives satisfied: " + info_dict["COSC 1 - Intro to Programming and Computation"][3]);
 			//var prereqs = document.createTextNode("Prerequisites: " + info_dict["COSC 1 - Intro to Programming and Computation"][5]);
 
-
 			coursetitle1.appendChild(title);
 			courseinfo1.appendChild(information);
 			courseterms1.appendChild(term);
@@ -237,23 +242,4 @@ function getMajorDepartment(department){
 		
 	return courses;
 
-}
-
-
-function removeInfo() {
-	console.log("moused out")
-	var info = document.getElementById('popup');
-	var coursetitle1 = document.getElementById("coursetitle");
-	var courseinfo1 = document.getElementById("courseinfo");
-	var courseinstructor1 = document.getElementById("courseinstructor");
-	var courseterms1 = document.getElementById("courseterm");
-	var coursedistribs1 = document.getElementById("coursedistribs");
-	var courseprereqs1 = document.getElementById("courseprereqs");
-	coursetitle1.innerHTML = '';
-	courseinfo1.innerHTML = '';
-	coursedistribs1.innerHTML = '';
-	courseterms1.innerHTML = '';
-	courseinstructor1.innerHTML = '';
-	courseprereqs1.innerHTML = '';
-	info.style.display = 'none';
 }

@@ -40,11 +40,12 @@ h2 {
     font-family: 'ApexSerifBook','Georgia', serif;
     font-weight: normal;
     background-color: #E0E0E0;
-    white-space: normal;
+    white-space:pre-wrap;
+    overflow: hidden;
     margin-bottom:5px;
     margin-right:5px;
     font-family: 'ApexNewBook',Arial,Sans-serif;
-    font-size:85%;
+    font-size:100%;
     height:20px;
     width: 100%;
     min-width: 300px;
@@ -67,6 +68,7 @@ h2 {
     padding-right:10px;
     padding-top:2px;
     padding-bottom:2px;
+    flex:1;
 }
 
 .course-listing-courses-container {
@@ -107,11 +109,12 @@ h2 {
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: relative;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    margin: auto;
 }
 
 /* Links inside the dropdown */

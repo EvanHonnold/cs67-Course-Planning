@@ -1,23 +1,10 @@
 function generateCourseBrowser(element){
-	//var section_title = document.createElement("h1");
-	//var title_text = document.createTextNode("Course Browser");
-	//section_title.appendChild(title_text);
-	//element.appendChild(section_title);
-
-	var courses_dictionary = new Object();
-	courses_dictionary={ 
-    	"Computer Science":["COSC 1 - Intro to Programming and Computation","COSC 10 - Problem Solving via Object-Oriented Programming", "COSC 30 - Discrete Mathematics","COSC 31 - Algorithms", "COSC 35 - Data Stream Algorithms", "COSC 39 - Theory of Computation", "COSC 50 - Software Development and Implementation", "COSC 51 - Computer Architecture","COSC 67 - Introduction to Human-Computer Interaction","COSC 73 - Computational Linguistics","COSC 74 - Machine Learning and Statistical Data Analysis","COSC 87 - Rendering Algorithms"],    
-     	"Psychological and Brain Sciences":["PSYC 1- Intro to psychology","PSYC 6 - Intro to Neuroscience","PSYC 10 - Statistics","PSYC 11 - Laboratory in Psychological Science","PSYC 21 - Perception","PSYC 23 - Social Psychology","PSYC 50.01 - Neuroscience of Mental Illness","PSYC 60 - Principles of Human Brain Mapping with fMRI","PSYC 80.03 - Spatial Cognition and Navigation: A Neurobiological Perspective","PSYC 81.07 - Decoding Human Brain Activity","PSYC 83.03 - The Self"],
-     	"Economics":["ECON 1 - Intro to Economics", "ECON 10 - Statistics", "ECON 35 - Game Theoy"]
-	};
-
 	var courses = document.createElement("div");
 	courses.id = "courseblock";
 	courses.classList.add('course-listing-container');
 	element.appendChild(courses);
 
- 	var integer = 0
-	var majorDisplay = getMajorDepartment(courses_dictionary, "Computer Science", integer);
+	var majorDisplay = getMajorDepartment("Computer Science");
 	element.appendChild(majorDisplay);
 
 	var info = document.createElement("div");
@@ -58,58 +45,39 @@ function cs(element) {
 	document.getElementById("department-name").textContent="Computer Science";
 	document.getElementById("courses").remove();
 
-	var courses_dictionary = new Object();
-	courses_dictionary={ 
-    	"Computer Science":["COSC 1 - Intro to Programming and Computation","COSC 10 - Problem Solving via Object-Oriented Programming", "COSC 30 - Discrete Mathematics","COSC 31 - Algorithms", "COSC 50 - Software Development and Implementation", "COSC 51 - Computer Architecture","COSC 39 - Theory of Computation","COSC 67 - Introduction to Human-Computer Interaction","COSC 73 - Computational Linguistics","COSC 74 - Machine Learning and Statistical Data Analysis","COSC 87 - Rendering Algorithms","COSC 35 - Data Stream Algorithms"],    
-     	"Psychological and Brain Sciences":["PSYC 1- Intro to psychology","PSYC 10 - Statistics","PSYC 23 - Social Psychology","PSYC 27 - Cognition","PSYC 6 - Intro to Neuroscience","PSYC 45 - Behavioral Neuroscience"], 
-     	"Economics":["ECON 1 - Intro to Economics", "ECON 10 - Statistics", "ECON 35 - Game Theoy"]
-	};
 	var integer = 1;
-	var majorDisplay = getMajorDepartment(courses_dictionary, "Computer Science", integer);
-	//document.getElementById("courseblock").appendChild(majorDisplay);
+	var majorDisplay = getMajorDepartment("Computer Science", integer);
 }
 
 function psych(element) {
 	document.getElementById("department-name").textContent="Psychological and Brain Sciences";
 	document.getElementById("courses").remove();
 
-	var courses_dictionary = new Object();
-	courses_dictionary={ 
-    	"Computer Science":["COSC 1 - Intro to Programming and Computation","COSC 10 - Problem Solving via Object-Oriented Programming", "COSC 30 - Discrete Mathematics","COSC 31 - Algorithms", "COSC 35 - Data Stream Algorithms", "COSC 39 - Theory of Computation", "COSC 50 - Software Development and Implementation", "COSC 51 - Computer Architecture","COSC 67 - Introduction to Human-Computer Interaction","COSC 73 - Computational Linguistics","COSC 74 - Machine Learning and Statistical Data Analysis","COSC 87 - Rendering Algorithms"],    
-     	"Psychological and Brain Sciences":["PSYC 1- Intro to psychology","PSYC 6 - Intro to Neuroscience","PSYC 10 - Statistics","PSYC 11 - Laboratory in Psychological Science","PSYC 21 - Perception","PSYC 23 - Social Psychology","PSYC 50.01 - Neuroscience of Mental Illness","PSYC 60 - Principles of Human Brain Mapping with fMRI","PSYC 80.03 - Spatial Cognition and Navigation: A Neurobiological Perspective","PSYC 81.07 - Decoding Human Brain Activity","PSYC 83.03 - The Self"],
-     	"Economics":["ECON 1 - Intro to Economics", "ECON 10 - Statistics", "ECON 35 - Game Theoy"]
-	};
-
-	var integer = 1;
-
-	var majorDisplay = getMajorDepartment(courses_dictionary, "Psychological and Brain Sciences", integer);
-	//document.getElementById("courseblock").appendChild(majorDisplay);
+	var majorDisplay = getMajorDepartment("Psychological and Brain Sciences");
 }
 
 function econ(element) {
 	document.getElementById("department-name").textContent="Economics";
 	document.getElementById("courses").remove();
 
-	var courses_dictionary = new Object();
-	courses_dictionary={ 
-    	"Computer Science":["COSC 1 - Intro to Programming and Computation","COSC 10 - Problem Solving via Object-Oriented Programming", "COSC 30 - Discrete Mathematics","COSC 31 - Algorithms", "COSC 50 - Software Development and Implementation", "COSC 51 - Computer Architecture","COSC 39 - Theory of Computation","COSC 67 - Introduction to Human-Computer Interaction","COSC 73 - Computational Linguistics","COSC 74 - Machine Learning and Statistical Data Analysis","COSC 87 - Rendering Algorithms","COSC 35 - Data Stream Algorithms"],    
-     	"Psychological and Brain Sciences":["PSYC 1- Intro to psychology","PSYC 10 - Statistics","PSYC 23 - Social Psychology","PSYC 27 - Cognition","PSYC 6 - Intro to Neuroscience","PSYC 45 - Behavioral Neuroscience"], 
-     	"Economics":["ECON 1 - Intro to Economics", "ECON 10 - Statistics", "ECON 35 - Game Theoy"]
-	};
-	var integer = 1;
-
-	var majorDisplay = getMajorDepartment(courses_dictionary, "Economics", integer);
-	///document.getElementById("courseblock").appendChild(majorDisplay);
+	var majorDisplay = getMajorDepartment("Economics");
 }
 
-function getMajorDepartment(dictionary, title, boolean){
+function getMajorDepartment(department){
 	var courses = document.getElementById('courseblock');
 	var coursesDisplay = document.createElement("div");
 	coursesDisplay.id = "courses"
 	coursesDisplay.classList.add('course-listing-course-container');
 	courses.appendChild(coursesDisplay);
+	
+	var courses_dictionary = new Object();
+	courses_dictionary={ 
+	    "Computer Science":["COSC 1 - Intro to Programming and Computation","COSC 10 - Problem Solving via Object-Oriented Programming", "COSC 30 - Discrete Mathematics","COSC 31 - Algorithms", "COSC 35 - Data Stream Algorithms", "COSC 39 - Theory of Computation", "COSC 50 - Software Development and Implementation", "COSC 51 - Computer Architecture","COSC 67 - Introduction to Human-Computer Interaction","COSC 73 - Computational Linguistics","COSC 74 - Machine Learning and Statistical Data Analysis","COSC 87 - Rendering Algorithms"],    
+	    "Psychological and Brain Sciences":["PSYC 1- Intro to psychology","PSYC 6 - Intro to Neuroscience","PSYC 10 - Statistics","PSYC 11 - Laboratory in Psychological Science","PSYC 21 - Perception","PSYC 23 - Social Psychology","PSYC 50.01 - Neuroscience of Mental Illness","PSYC 60 - Principles of Human Brain Mapping with fMRI","PSYC 80.03 - Spatial Cognition and Navigation: A Neurobiological Perspective","PSYC 81.07 - Decoding Human Brain Activity","PSYC 83.03 - The Self"],
+	    "Economics":["ECON 1 - Intro to Economics", "ECON 10 - Statistics", "ECON 35 - Game Theoy"]
+	};
 
-	var myStringArray = dictionary[title];
+	var myStringArray = courses_dictionary[department];
 	var arrayLength = myStringArray.length;
 	for (var i = 0; i < arrayLength; i++) {
 		var course1 = document.createElement("div");
@@ -120,14 +88,7 @@ function getMajorDepartment(dictionary, title, boolean){
 		// target elements with the "draggable" class
 		interact('.draggable')
 		.draggable({
-			revert: function(dropped) {
-			    var dropped = dropped && dropped[0].id == "droppable";
-			    if(!dropped) {
-			        $(this).data("draggable").originalPosition = {top:0, left:0}
-			        $(this).appendTo($(this).data('originalParent'))
-			    }
-			    return !dropped;
-			},
+
 		    // enable inertial throwing
 		    inertia: true,
 		    // keep the element within the area of it's parent
@@ -140,8 +101,10 @@ function getMajorDepartment(dictionary, title, boolean){
 		    autoScroll: true,
 
 		    //call this function on every dragmove event
-		    onmove: dragMoveListener
+		    onmove: dragMoveListener,
+		    ondragend: dragMoveEnd
 		});
+
 		function dragMoveListener (event) {
     		var target = event.target,
         		// keep the dragged position in the data-x/data-y attributes
@@ -151,11 +114,31 @@ function getMajorDepartment(dictionary, title, boolean){
 		    // translate the element
 		    target.style.webkitTransform =
 		    target.style.transform =
-		      'translate(' + x + 'px, ' + y + 'px)';
+		    'translate(' + x + 'px, ' + y + 'px)';
 
 		    // update the posiion attributes
 		    target.setAttribute('data-x', x);
 		    target.setAttribute('data-y', y);
+		}
+		function dragMoveEnd(event) {
+    		var target = event.target,
+        		// keep the dragged position in the data-x/data-y attributes
+        		x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+        		y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+        	var name = this.textContent;
+        	if (notifyDroppedClass(x,y,name)) {
+        		// remove element from course list
+        		for (var i = 0; i < arrayLength; i++) {
+        			if ( myStringArray[i].equals(name) ) {
+        				myStringArray.splice(i, 1);
+        			}
+        		}
+        		// update course list
+        		document.getElementById("department-name").click();
+        	} else {
+        		document.getElementById("department-name").click();
+        	}
 		}
 		coursesDisplay.appendChild(course1);
 	}

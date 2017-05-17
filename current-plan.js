@@ -7,6 +7,14 @@
 function CurrentPlan(screenSection, importedHTML){
 	var currentPlan = this;
 
+	//// NOTE: this is for testing - REMOVE WHEN DONE
+
+	document.addEventListener("click", function(e){
+		currentPlan.notifyHoveringClass(e.pageX, e.pageY);
+	});
+
+	/////////// END TESTING
+
 	// adds in the title
 	screenSection.appendChild(importedHTML.getElementsByTagName("h1")[0]);
 
@@ -30,7 +38,7 @@ function CurrentPlan(screenSection, importedHTML){
 	 *  will temporarily change color. 
 	 */
 	this.notifyHoveringClass = function(mouseX, mouseY){
-		if (typeof currentPlan.termDisplays !== 'undefined')
+		if (typeof currentPlan.termDisplays == 'undefined')
 			return;
 		for (var i = 0; i < currentPlan.termDisplays.length; i++)
 			currentPlan.termDisplays[i].notifyHoveringClass(mouseX, mouseY);
@@ -43,17 +51,67 @@ function CurrentPlan(screenSection, importedHTML){
 	 *  the function will return false. 
 	 */
 	this.notifyDroppedClass = function(mouseX, mouseY, courseName){
-
+		if (typeof currentPlan.termDisplays == 'undefined')
+			return;
+		for (var i = 0; i < currentPlan.termDisplays.length; i++){
+			var dropSuccess = currentPlan.termDisplays[i].notifyDroppedgClass(mouseX, mouseY, courseName);
+			if (dropSuccess)
+				return true;
+		}
+		return false;
 	}
 
 	function SingleTermDisplay(term){
-		var termListingContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
-		var newContainer = termListingContainer.cloneNode(true);
-		newContainer.getElementsByClassName("term-listing-term-name-text")[0].textContent = term.toString();
-		screenSection.appendChild(newContainer);
+
+		// colors to represent the boxes' statuses:
+		var color_filled= "#BDBDBD";  // gray 400
+		var color_empty = "#E0E0E0";   // gray 300
+		var color_hover = "#EEEEEE";   // gray 200
+
+		// initialization
+		var importedContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
+		var container = importedContainer.cloneNode(true);
+		container.getElementsByClassName("term-listing-term-name-text")[0].textContent = term.toString();
+		screenSection.appendChild(container);
+		var slotElements = container.getElementsByClassName("course-box");
+		var courseSlots = new Array();
+		for (var i = 0; i < slotElements.length; i++){
+			var newSlot = new CourseSlot(slotElements[i]);
+			courseSlots.push(newSlot);
+		}
 
 		this.notifyHoveringClass = function(mouseX, mouseY){
+			for (var i = 0; i < courseSlots.length; i++)
+				courseSlots[i].notifyHoveringClass(mouseX, mouseY);
+		}
+		
+		// returns True if the course was successfully dropped in a slot on this section
+		this.notifyDroppedClass = function(mouseX, mouseY, courseName){
 
+		}
+
+		function CourseSlot(element){
+			var courseSlot = this;
+			this.filled = false;
+			element.style.backgroundColor = color_empty;
+			element.textContent = "drag and drop a course here";
+
+			this.notifyHoveringClass = function(mouseX, mouseY){
+				var bounds = element.getBoundingClientRect();
+				if (mouseX > bounds.left && mouseX < bounds.right 
+					&& mouseY > bounds.top && mouseY < bounds.bottom){ 
+					console.log("within bounds");
+					if (!courseSlot.filled){
+						element.style.backgroundColor = color_hover;
+					}
+				}
+				else {
+					if (!courseSlot.filled)
+						element.style.backgroundColor = color_empty;
+					else
+						element.style.backgroundColor = color_filled;
+				}
+			}
 		}
 	}
 }

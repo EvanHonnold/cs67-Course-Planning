@@ -44,8 +44,8 @@ and the classes listed under that term */
     padding-right:5px;
 }
 
-.course-box, .add-fourth-course-btn{
-    background-color: #E0E0E0;
+.course-box{
+    /* background-color: #E0E0E0; */
     white-space: nowrap;
     overflow:hidden;
     text-overflow:ellipsis;

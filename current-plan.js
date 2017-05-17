@@ -10,9 +10,11 @@ function CurrentPlan(screenSection){
 
 	//// NOTE: this is for testing - REMOVE WHEN DONE
 
+	/*
 	document.addEventListener("click", function(e){
-		currentPlan.notifyHoveringClass(e.pageX, e.pageY);
+		currentPlan.notifyDroppedClass(e.pageX, e.pageY, "sdfgsdfgsdFGsdf");
 	});
+	*/
 
 	/////////// END TESTING
 
@@ -39,10 +41,9 @@ function CurrentPlan(screenSection){
 	 *  will temporarily change color. 
 	 */
 	this.notifyHoveringClass = function(mouseX, mouseY){
-		if (typeof currentPlan.termDisplays == 'undefined')
-			return;
-		for (var i = 0; i < currentPlan.termDisplays.length; i++)
-			currentPlan.termDisplays[i].notifyHoveringClass(mouseX, mouseY);
+		var slots = getCourseSlots();
+		for (var i = 0; i < slots.length; i++)
+			slots[i].notifyHoveringClass(mouseX, mouseY);
 	}
 
 	/**
@@ -52,14 +53,24 @@ function CurrentPlan(screenSection){
 	 *  the function will return false. 
 	 */
 	this.notifyDroppedClass = function(mouseX, mouseY, courseName){
-		if (typeof currentPlan.termDisplays == 'undefined')
-			return;
-		for (var i = 0; i < currentPlan.termDisplays.length; i++){
-			var dropSuccess = currentPlan.termDisplays[i].notifyDroppedClass(mouseX, mouseY, courseName);
+		var slots = getCourseSlots();
+		for (var i = 0; i < slots.length; i++){
+			var dropSuccess = slots[i].notifyDroppedClass(mouseX, mouseY, courseName);
 			if (dropSuccess)
 				return true;
 		}
 		return false;
+	}
+
+	// local helper function
+	function getCourseSlots(){
+		var slots = new Array();
+		for (var i = 0; i < currentPlan.termDisplays.length; i++){
+			var currSlots = currentPlan.termDisplays[i].courseSlots;
+			for (var j = 0; j < currSlots.length; j++)
+				slots.push(currSlots[j]);
+		}
+		return slots;
 	}
 
 	function SingleTermDisplay(term, parentElement){
@@ -97,16 +108,6 @@ function CurrentPlan(screenSection){
 
 		/////////// END of HTML GENERATION ////////////////
 
-		this.notifyHoveringClass = function(mouseX, mouseY){
-			for (var i = 0; i < this.courseSlots.length; i++)
-				this.courseSlots[i].notifyHoveringClass(mouseX, mouseY);
-		}
-		
-		// returns True if the course was successfully dropped in a slot on this section
-		this.notifyDroppedClass = function(mouseX, mouseY, courseName){
-
-		}
-
 		function CourseSlot(parentElement){
 			var courseSlot = this;
 			this.filled = false;
@@ -125,14 +126,33 @@ function CurrentPlan(screenSection){
 			////// End of Dynamic HTML Generation //////
 
 			this.notifyHoveringClass = function(mouseX, mouseY){
-				var bounds = courseSlot.courseBox.getBoundingClientRect();
-				if (mouseX > bounds.left && mouseX < bounds.right 
-					&& mouseY > bounds.top && mouseY < bounds.bottom){ 
+				if (inBounds(mouseX, mouseY))
 					colorElement(true);
-				}
-				else {
+				else
 					colorElement(false);
+			}
+
+			this.notifyDroppedClass = function(mouseX, mouseY, courseName){
+				if (!inBounds(mouseX, mouseY))
+					return false;
+				else {
+					if (this.filled)
+						return false;
+					else {
+						courseSlot.courseBox.textContent = courseName;
+						courseSlot.filled = true;
+						colorElement(false);
+						return true;
+					}
 				}
+			}
+
+			function inBounds(x, y){
+				var bounds = courseSlot.courseBox.getBoundingClientRect();
+				if (x > bounds.left && x < bounds.right && y > bounds.top && y < bounds.bottom)
+					return true;
+				else
+					return false;
 			}
 
 			function colorElement(hoveredOver){

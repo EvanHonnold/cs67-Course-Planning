@@ -40,6 +40,8 @@ h2 {
     margin-right:5px;
     font-family: 'ApexNewBook',Arial,Sans-serif;
     font-size:85%;
+    height:20px;
+    width: auto;
 }
 
 .info-box{

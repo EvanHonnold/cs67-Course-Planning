@@ -36,7 +36,6 @@ function generateCourseBrowser(element){
 	info.appendChild(coursedistribs);
 	info.appendChild(courseterm);
 	info.appendChild(courseprereqs);
-	displayInfo("COSC 1 - Intro to Programming and Computation");
 
 	console.log("course browser loaded");
 }
@@ -209,7 +208,6 @@ function getMajorDepartment(department){
 			//var distribs = document.createTextNode("Distributives satisfied: " + info_dict["COSC 1 - Intro to Programming and Computation"][3]);
 			//var prereqs = document.createTextNode("Prerequisites: " + info_dict["COSC 1 - Intro to Programming and Computation"][5]);
 
-			console.log("at display");
 
 			coursetitle1.appendChild(title);
 			courseinfo1.appendChild(information);
@@ -219,64 +217,31 @@ function getMajorDepartment(department){
 			courseprereqs1.appendChild(prereqs);
 			info.style.display = 'block';
 		});
-		children[i].onMouseout = removeInfo;
+		children[i].addEventListener("mouseout", function(){
+			var info = document.getElementById('popup');
+			var coursetitle1 = document.getElementById("coursetitle");
+			var courseinfo1 = document.getElementById("courseinfo");
+			var courseinstructor1 = document.getElementById("courseinstructor");
+			var courseterms1 = document.getElementById("courseterm");
+			var coursedistribs1 = document.getElementById("coursedistribs");
+			var courseprereqs1 = document.getElementById("courseprereqs");
+			coursetitle1.innerHTML = '';
+			courseinfo1.innerHTML = '';
+			coursedistribs1.innerHTML = '';
+			courseterms1.innerHTML = '';
+			courseinstructor1.innerHTML = '';
+			courseprereqs1.innerHTML = '';
+			info.style.display = 'none';
+		});
 	}
 		
 	return courses;
 
 }
 
-function displayInfo(coursename) {
-	var info = document.getElementById('popup');
-
-	var info_dict = new Object();
-	info_dict={
-		"COSC 1 - Intro to Programming and Computation":["COSC 1 - Intro to Programming and Computation","This course introduces computational concepts that are fundamental to computer science and are useful for the sciences, social sciences, engineering, and digital arts. Students will write their own interactive programs to analyze data, process text, draw graphics, manipulate images, and simulate physical systems. Problem decomposition, program efficiency, and good programming style are emphasized throughout the course. No prior programming experience is assumed.", "Farid (fall), Balkcom (winter), Cormen (spring)", "TLA", "16F, 17W, 17S", "None"],
-		"COSC 10 - Intro to Java":["COSC 10 - Intro to Java", "Motivated by problems that arise in a variety of disciplines, this course examines concepts and develops skills in solving computational problems. Topics covered include abstraction (how to hide details), modularity (how to decompose problems), data structures (how to efficiently organize data), and algorithms (procedures for solving problems). Laboratory assignments are implemented using object-oriented programming techniques.", "Bailey-Kellogg (fall), Kotz (winter), Casey (spring)", "16F, 17W, 17S", "TLA",  "COSC 1, ENGS 20, or placement through the Advanced Placement exam or the local placement exam."], 
-		"COSC 30 - Discrete Mathematics": ["COSC 30 - Discrete Mathematics", "info", "instructors", "terms", "distribs", "prereqs"],
-		"COSC 31 - Algorithms": ["COSC 31 - Algorithms", "info", "instructors", "terms", "distribs", "prereqs"], 
-		"COSC 50 - Software Development and Implementation": ["COSC 50 - Software Design and Implementation", "info", "instructors", "terms", "distribs", "prereqs"], 
-		"COSC 51 - Computer Architecture": ["COSC 51 - Computer Architecture", "info", "instructors", "terms", "distribs", "prereqs"]
-	};
-
-	var coursetitle1 = document.getElementById("coursetitle");
-	var courseinfo1 = document.getElementById("courseinfo");
-	var courseinstructor1 = document.getElementById("courseinstructor");
-	var courseterms1 = document.getElementById("courseterm");
-	var coursedistribs1 = document.getElementById("coursedistribs");
-	var courseprereqs1 = document.getElementById("courseprereqs");
-	coursetitle1.innerHTML = '';
-	courseinfo1.innerHTML = '';
-	coursedistribs1.innerHTML = '';
-	courseterms1.innerHTML = '';
-	courseinstructor1.innerHTML = '';
-	courseprereqs1.innerHTML = '';
-	var title= document.createTextNode("Title: " + info_dict[coursename][0]);
-	var information = document.createTextNode("Information: " + info_dict[coursename][1]);
-	var term = document.createTextNode("Terms offered: " + info_dict[coursename][4]);
-	var prof = document.createTextNode("Instructor(s): " + info_dict[coursename][2]);
-	var distribs = document.createTextNode("Distributives satisfied: " + info_dict[coursename][3]);
-	var prereqs = document.createTextNode("Prerequisites: " + info_dict[coursename][5]);
-
-	//var title= document.createTextNode("Title: " + info_dict["COSC 1 - Intro to Programming and Computation"][0]);
-	//var information = document.createTextNode("Information: " + info_dict["COSC 1 - Intro to Programming and Computation"][1]);
-	//var term = document.createTextNode("Terms offered: " + info_dict["COSC 1 - Intro to Programming and Computation"][4]);
-	//var prof = document.createTextNode("Instructor(s): " + info_dict["COSC 1 - Intro to Programming and Computation"][2]);
-	//var distribs = document.createTextNode("Distributives satisfied: " + info_dict["COSC 1 - Intro to Programming and Computation"][3]);
-	//var prereqs = document.createTextNode("Prerequisites: " + info_dict["COSC 1 - Intro to Programming and Computation"][5]);
-
-	console.log("at display");
-
-	coursetitle1.appendChild(title);
-	courseinfo1.appendChild(information);
-	courseterms1.appendChild(term);
-	courseinstructor1.appendChild(prof);
-	coursedistribs1.appendChild(distribs);
-	courseprereqs1.appendChild(prereqs);
-	info.style.display = 'block';
-}
 
 function removeInfo() {
+	console.log("moused out")
 	var info = document.getElementById('popup');
 	var coursetitle1 = document.getElementById("coursetitle");
 	var courseinfo1 = document.getElementById("courseinfo");
@@ -290,6 +255,5 @@ function removeInfo() {
 	courseterms1.innerHTML = '';
 	courseinstructor1.innerHTML = '';
 	courseprereqs1.innerHTML = '';
-	var title= document.createTextNo
 	info.style.display = 'none';
 }

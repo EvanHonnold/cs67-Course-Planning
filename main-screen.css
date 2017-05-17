@@ -11,6 +11,10 @@ affect the other sections.
 
 **/
 
+divider {
+    padding-right: 20px;
+    padding-left: 20px;
+}
 h1 {
     color:#333;
     font-size: 160%;
@@ -22,34 +26,28 @@ h1 {
 }
 
 h2 {
-   color:#222;
-   font-size: 300%;
+   color:#333;
+   font-size: 400%;
    font-family: 'ApexSerifBook','Georgia', serif;
    font-weight: normal;
-   width: 100%;
-   padding: 100px;
-   margin: auto;
-   margin-top:0.5em;
-   margin-bottom:0.5em;
+   margin-left:100px;
 }
 
 .course-box{
     background-color: #E0E0E0;
-    white-space: nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    padding-left:100px;
-    padding-right:3px;
-    padding-top:2px;
-    padding-bottom:2px;
+    white-space: normal;
+    margin-bottom:5px;
+    margin-right:5px;
     font-family: 'ApexNewBook',Arial,Sans-serif;
     font-size:85%;
 }
 
 .info-box{
-    background-color: #757575;
-    text-overflow: ellipsis;
+    background-color: #ffffff;
+    white-space:pre-wrap;
     overflow: hidden;
+    margin-left:5px;
+    margin-right:5px;
 }
 
 .course-listing-container {
@@ -74,12 +72,13 @@ h2 {
     color: white;
     padding: 16px;
     font-size: 16px;
-    border: none;
+    border: 2px solid black;
     cursor: pointer;
-    max-width: 150px;
-    min-width: 150px;
+    max-width: 340px;
+    min-width: 340px;
     max-height: 110px;
     min-height: 110px;
+    margin-left: 25px;
 }
 
 /* The container <div> - needed to position the dropdown content */

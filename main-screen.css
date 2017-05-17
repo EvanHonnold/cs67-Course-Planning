@@ -27,13 +27,18 @@ h1 {
 
 h2 {
    color:#333;
-   font-size: 400%;
+   font-size: 160%;
    font-family: 'ApexSerifBook','Georgia', serif;
    font-weight: normal;
-   margin-left:100px;
+   margin-top:0.5em;
+   margin-bottom:0.5em;
+   text-align:center;
+
 }
 
 .course-box{
+    font-family: 'ApexSerifBook','Georgia', serif;
+    font-weight: normal;
     background-color: #E0E0E0;
     white-space: normal;
     margin-bottom:5px;
@@ -41,7 +46,8 @@ h2 {
     font-family: 'ApexNewBook',Arial,Sans-serif;
     font-size:85%;
     height:20px;
-    width: auto;
+    width: 100%;
+    min-width: 300px;
 }
 
 .info-box{
@@ -50,6 +56,8 @@ h2 {
     overflow: hidden;
     margin-left:5px;
     margin-right:5px;
+    font-family: 'ApexSerifBook','Georgia', serif;
+    font-weight: normal;
 }
 
 .course-listing-container {
@@ -64,23 +72,29 @@ h2 {
 .course-listing-courses-container {
     background-color: #BDBDBD;
     text-overflow:ellipsis;
-
     flex: 1;
 }
 
 /* Dropdown Button */
 .dropbtn {
+
+    font-family: 'ApexSerifBook','Georgia', serif;
+    font-weight: normal;
     background-color: #4CAF50;
     color: white;
     padding: 16px;
-    font-size: 16px;
+    font-size: 24px;
     border: 2px solid black;
     cursor: pointer;
-    max-width: 340px;
+    width: 100%;
+    max-width: 400px;
     min-width: 340px;
     max-height: 110px;
     min-height: 110px;
-    margin-left: 25px;
+    margin-left: 50px;
+    text-align:center;
+
+
 }
 
 /* The container <div> - needed to position the dropdown content */

@@ -16,13 +16,15 @@ function Season(name){
     }
 };
 
-function Term(season, year){
+function Term(season, year, studentOnCampus){
     if (!(season instanceof Season))
         throw "Term must be given a season object";
     if (!(year instanceof Number))
         throw "Term must be given a number object to represent the year";
     if (year < 2000 || year > 2050)
         throw "" + year + " is not a valid year";
+
+    this.onCampus = studentOnCampus;
 
     this.toString = function(){
         return season + " " + year;

@@ -56,3 +56,7 @@ and the classes listed under that term */
     font-family: 'ApexNewBook',Arial,Sans-serif;
     font-size:85%;
 }
+
+.course-box-divider {
+    height: 2px;
+}

@@ -4,8 +4,9 @@
  * Currently incomplete
  */
 
-function CurrentPlan(screenSection, importedHTML){
+function CurrentPlan(screenSection){
 	var currentPlan = this;
+	this.termDisplays = new Array();
 
 	//// NOTE: this is for testing - REMOVE WHEN DONE
 
@@ -16,7 +17,7 @@ function CurrentPlan(screenSection, importedHTML){
 	/////////// END TESTING
 
 	// adds in the title
-	screenSection.appendChild(importedHTML.getElementsByTagName("h1")[0]);
+	screenSection.appendChild(makeElemWithText("h1", "Current Plan"));
 
 	// takes a list of terms and adds html to display them
 	this.showTerms = function(terms){
@@ -26,7 +27,7 @@ function CurrentPlan(screenSection, importedHTML){
 		for (var i = 0; i < terms.length; i++){
 			if (!(terms[i] instanceof Term))
 				throw "Current Plan was given an array containing an object that isn't a Term";
-			var newTermDisplay = new SingleTermDisplay(terms[i]);
+			var newTermDisplay = new SingleTermDisplay(terms[i], screenSection);
 			currentPlan.termDisplays.push(newTermDisplay);
 		}
 	}
@@ -54,35 +55,51 @@ function CurrentPlan(screenSection, importedHTML){
 		if (typeof currentPlan.termDisplays == 'undefined')
 			return;
 		for (var i = 0; i < currentPlan.termDisplays.length; i++){
-			var dropSuccess = currentPlan.termDisplays[i].notifyDroppedgClass(mouseX, mouseY, courseName);
+			var dropSuccess = currentPlan.termDisplays[i].notifyDroppedClass(mouseX, mouseY, courseName);
 			if (dropSuccess)
 				return true;
 		}
 		return false;
 	}
 
-	function SingleTermDisplay(term){
+	function SingleTermDisplay(term, parentElement){
+		var singleTermDisplay = this;
+		this.courseSlots = new Array();
 
-		// colors to represent the boxes' statuses:
-		var color_filled= "#BDBDBD";  // gray 400
-		var color_empty = "#E0E0E0";   // gray 300
-		var color_hover = "#EEEEEE";   // gray 200
+		/////////////////////////////////////////
+		// ---- generate the HTML dynamically ----
+		/////////////////////////////////////////
 
-		// initialization
-		var importedContainer = importedHTML.getElementsByClassName("term-listing-container")[0];
-		var container = importedContainer.cloneNode(true);
-		container.getElementsByClassName("term-listing-term-name-text")[0].textContent = term.toString();
-		screenSection.appendChild(container);
-		var slotElements = container.getElementsByClassName("course-box");
-		var courseSlots = new Array();
-		for (var i = 0; i < slotElements.length; i++){
-			var newSlot = new CourseSlot(slotElements[i]);
-			courseSlots.push(newSlot);
+		// container
+		var termListingContainer = makeElemWithClass("div", "term-listing-container");
+		parentElement.appendChild(termListingContainer);
+
+		// left part (the term)
+		var termListingTermName = makeElemWithClass("div", "term-listing-term-name");
+		termListingContainer.appendChild(termListingTermName);
+		var topDiv = document.createElement("div");
+		topDiv.style.flex = 0.5;
+		termListingTermName.appendChild(topDiv);
+		var termListingTermNameText = makeElemWithClass("div","term-listing-term-name-text");
+		termListingTermName.appendChild(termListingTermNameText);
+		termListingTermNameText.textContent = term.toString();
+		var btmDiv = topDiv.cloneNode();
+		termListingTermName.appendChild(btmDiv);
+
+		// right part (the set of slots for courses)
+		var termListingCoursesContainer = makeElemWithClass("div", "term-listing-courses-container");
+		termListingContainer.appendChild(termListingCoursesContainer);
+		for (var i = 0; i < 3; i++){
+			this.courseSlots.push(new CourseSlot(termListingCoursesContainer));
+			if (i < 2)
+				termListingCoursesContainer.appendChild(makeElemWithClass("div", "course-box-divider"));
 		}
 
+		/////////// END of HTML GENERATION ////////////////
+
 		this.notifyHoveringClass = function(mouseX, mouseY){
-			for (var i = 0; i < courseSlots.length; i++)
-				courseSlots[i].notifyHoveringClass(mouseX, mouseY);
+			for (var i = 0; i < this.courseSlots.length; i++)
+				this.courseSlots[i].notifyHoveringClass(mouseX, mouseY);
 		}
 		
 		// returns True if the course was successfully dropped in a slot on this section
@@ -90,33 +107,62 @@ function CurrentPlan(screenSection, importedHTML){
 
 		}
 
-		function CourseSlot(element){
+		function CourseSlot(parentElement){
 			var courseSlot = this;
 			this.filled = false;
-			element.style.backgroundColor = color_empty;
-			element.textContent = "drag and drop a course here";
+
+			// colors to represent the boxes' statuses:
+			var color_filled= "#BDBDBD";  // gray 400
+			var color_empty = "#E0E0E0";   // gray 300
+			var color_hover = "#EEEEEE";   // gray 200
+
+			////// Dynamic HTML Generation //////
+			this.courseBox = makeElemWithClass("div", "course-box");
+			parentElement.appendChild(this.courseBox);
+			this.courseBox.textContent = "drop a course here";
+			colorElement(false);
+
+			////// End of Dynamic HTML Generation //////
 
 			this.notifyHoveringClass = function(mouseX, mouseY){
-				var bounds = element.getBoundingClientRect();
+				var bounds = courseSlot.courseBox.getBoundingClientRect();
 				if (mouseX > bounds.left && mouseX < bounds.right 
 					&& mouseY > bounds.top && mouseY < bounds.bottom){ 
-					console.log("within bounds");
-					if (!courseSlot.filled){
-						element.style.backgroundColor = color_hover;
-					}
+					colorElement(true);
 				}
 				else {
-					if (!courseSlot.filled)
-						element.style.backgroundColor = color_empty;
-					else
-						element.style.backgroundColor = color_filled;
+					colorElement(false);
 				}
+			}
+
+			function colorElement(hoveredOver){
+				var color;
+				if (courseSlot.filled)
+					color = color_filled;
+				else {
+					if (hoveredOver)
+						color = color_hover;
+					else
+						color = color_empty;
+				}
+				courseSlot.courseBox.style.backgroundColor = color;
 			}
 		}
 	}
 }
 
+function makeElemWithText(tag, text){
+	var elem = document.createElement(tag);
+	var elemText = document.createTextNode(text);
+	elem.appendChild(elemText);
+	return elem;
+}
 
+function makeElemWithClass(tag, className){
+	var elem = document.createElement(tag);
+	elem.classList.add(className);
+	return elem;
+}
 
 
 function GetTermsForTesting(){

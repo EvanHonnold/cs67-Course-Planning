@@ -31,7 +31,6 @@
 <link rel="stylesheet" type="text/css" href="main-screen.css">
 <link rel="stylesheet" type="text/css" href="current-plan.css">
 
-<link rel="import" href="current-plan.html">
 <script type="text/javascript" src="interact.js"></script>
 <script type="text/javascript" src="course-browser.js"></script>
 <script type="text/javascript" src="current-plan.js"></script>
@@ -47,19 +46,8 @@ window.onload = function(){
     // imported in the HTML above.
     generateCourseBrowser(screenSections[1]);
     generateRequirementsView(screenSections[2]);
-
-    // Evan: I'm now loading my section from another HTML
-    // document instead of creating it dynamically. I think this makes
-    // my section easier to edit.  You won't be able to see my section 
-    // unless you enable CORS in your browser (the following line will
-    // create an error). I can show you how to do this. 
-    var currentPlanHTML = document.querySelector('link[rel="import"]').import.querySelector('body');
-    var currentPlan = new CurrentPlan(screenSections[0], currentPlanHTML);
+    var currentPlan = new CurrentPlan(screenSections[0]);
     currentPlan.showTerms(GetTermsForTesting());
-
-  /*while (currentPlan.children.length > 0){
-        screenSections[0].appendChild(currentPlan.firstChild);
-    } */
 
 }
 </script>

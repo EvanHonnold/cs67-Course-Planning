@@ -157,12 +157,6 @@ function generateCourseBrowser(element, currentPlan){
 
 	        	console.log(currentPlan.notifyDroppedClass(event.clientX,event.clientY,event.target.textContent));
 				if (currentPlan.notifyDroppedClass(event.clientX,event.clientY,event.target.textContent)) {
-	        		// remove element from course list
-	        		for (var i = 0; i < arrayLength; i++) {
-	        			if ( myStringArray[i].equals(event.target.textContent) ) {
-	        				myStringArray.splice(i, 1);
-	        			}
-	        		}
 	        		// update course list
 	        		var evnt = document.getElementById("department-name")["click"];
 	        		evnt.call(document.getElementById("department-name"));

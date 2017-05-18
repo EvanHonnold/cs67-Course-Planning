@@ -92,7 +92,7 @@ function generateCourseBrowser(element, currentPlan){
 		var arrayLength = myStringArray.length;
 		for (var i = 0; i < arrayLength; i++) {
 			var course1 = document.createElement("div");
-			course1.classList.add("course-box");
+			course1.classList.add("course1-box");
 			course1.classList.add("draggable");
 			var text1 = document.createTextNode(myStringArray[i]);
 			course1.id = i;

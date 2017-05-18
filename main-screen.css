@@ -15,6 +15,7 @@ divider {
     padding-right: 20px;
     padding-left: 20px;
 }
+
 h1 {
     color:#333;
     font-size: 160%;
@@ -60,21 +61,6 @@ h2 {
     font-weight: normal;
 }
 
-.course-listing-container {
-    text-overflow:ellipsis;
-    display:flex;
-    padding-left:10px;
-    padding-right:10px;
-    padding-top:2px;
-    padding-bottom:2px;
-    flex:1;
-}
-
-.course-listing-courses-container {
-    background-color: #BDBDBD;
-    text-overflow:ellipsis;
-    flex: 1;
-}
 
 /* Dropdown Button */
 .dropbtn {
@@ -83,15 +69,11 @@ h2 {
     background-color: #4CAF50;
     color: white;
     padding: 16px;
-    font-size: 24px;
+    font-size: 20px;
     border: 2px solid black;
     cursor: pointer;
     width: 100%;
-    max-width: 400px;
-    min-width: 340px;
-    max-height: 110px;
-    min-height: 110px;
-    margin-left: 50px;
+    margin-left: 5px;
     text-align:center;
 }
 

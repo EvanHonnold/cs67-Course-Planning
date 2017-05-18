@@ -10,7 +10,7 @@ function generateCourseBrowser(element, currentPlan){
 	econelement.onclick = econ;
 	var courses = document.createElement("div");
 	courses.id = "courseblock";
-	courses.classList.add('course-listing-container');
+	courses.classList.add('course-info-container');
 	element.appendChild(courses);
 
 	var majorDisplay = getMajorDepartment("Computer Science", currentPlan);

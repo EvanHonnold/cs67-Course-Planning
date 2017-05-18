@@ -53,7 +53,6 @@ function CurrentPlan(screenSection){
 	 *  the function will return false. 
 	 */
 	this.notifyDroppedClass = function(mouseX, mouseY, courseName){
-		currentPlan.notifyHoveringClass(-1, -1); // to un-highlight all courses
 		var slots = getCourseSlots();
 		for (var i = 0; i < slots.length; i++){
 			var dropSuccess = slots[i].notifyDroppedClass(mouseX, mouseY, courseName);
@@ -101,15 +100,10 @@ function CurrentPlan(screenSection){
 		// right part (the set of slots for courses)
 		var termListingCoursesContainer = makeElemWithClass("div", "term-listing-courses-container");
 		termListingContainer.appendChild(termListingCoursesContainer);
-		if (term.onCampus){
-			for (var i = 0; i < 3; i++){
-				this.courseSlots.push(new CourseSlot(termListingCoursesContainer));
-				if (i < 2)
-					termListingCoursesContainer.appendChild(makeElemWithClass("div", "course-box-divider"));
-			}
-		}
-		else {
-			// show "off campus" thing
+		for (var i = 0; i < 3; i++){
+			this.courseSlots.push(new CourseSlot(termListingCoursesContainer));
+			if (i < 2)
+				termListingCoursesContainer.appendChild(makeElemWithClass("div", "course-box-divider"));
 		}
 
 		/////////// END of HTML GENERATION ////////////////
@@ -119,9 +113,9 @@ function CurrentPlan(screenSection){
 			this.filled = false;
 
 			// colors to represent the boxes' statuses:
-			var color_filled= "#E0E0E0";  // gray 300
-			var color_empty = "#EEEEEE";   // gray 200
-			var color_hover = "F5F5F5";   // gray 100
+			var color_filled= "#BDBDBD";  // gray 400
+			var color_empty = "#E0E0E0";   // gray 300
+			var color_hover = "#EEEEEE";   // gray 200
 
 			////// Dynamic HTML Generation //////
 			this.courseBox = makeElemWithClass("div", "course-box");
@@ -193,11 +187,11 @@ function makeElemWithClass(tag, className){
 
 function GetTermsForTesting(){
 	var terms = new Array();
-	terms.push(new Term(new Season("winter"), new Number(2016), true));
-	terms.push(new Term(new Season("spring"), new Number(2016), true));
-	terms.push(new Term(new Season("summer"), new Number(2016), false));
-	terms.push(new Term(new Season("fall"), new Number(2016), true));
-	terms.push(new Term(new Season("winter"), new Number(2017), false));
+	terms.push(new Term(new Season("winter"), new Number(2016)));
+	terms.push(new Term(new Season("spring"), new Number(2016)));
+	terms.push(new Term(new Season("summer"), new Number(2016)));
+	terms.push(new Term(new Season("fall"), new Number(2016)));
+	terms.push(new Term(new Season("winter"), new Number(2017)));
 	return terms;
 }
 

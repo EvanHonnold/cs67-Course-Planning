@@ -36,24 +36,6 @@ h2 {
 
 }
 
-/* Evan: Why is there another definition of course-box here? 
-         It's clashing with mine in current-plan.css, so I've commented it out.
-
-.course-box{
-    font-family: 'ApexSerifBook','Georgia', serif;
-    font-weight: normal;
-    background-color: #E0E0E0;
-    overflow: hidden;
-    margin-bottom:5px;
-    margin-right:5px;
-    font-family: 'ApexNewBook',Arial,Sans-serif;
-    font-size:100%;
-    height:20px;
-    width: 100%;
-    min-width: 300px;
-}
-*/
-
 .info-box{
     background-color: #ffffff;
     white-space:pre-wrap;

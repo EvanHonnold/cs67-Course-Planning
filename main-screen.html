@@ -32,8 +32,8 @@
 <link rel="stylesheet" type="text/css" href="current-plan.css">
 
 <script type="text/javascript" src="interact.js"></script>
-<script type="text/javascript" src="course-browser.js"></script>
 <script type="text/javascript" src="current-plan.js"></script>
+<script type="text/javascript" src="course-browser.js"></script>
 <script type="text/javascript" src="requirements-view.js"></script>
 <script type="text/javascript" src="javascript_objects/seasons.js"></script>
 
@@ -44,10 +44,10 @@ window.onload = function(){
     
     // these functions are defined in the three scripts 
     // imported in the HTML above.
-    generateCourseBrowser(screenSections[1]);
-    generateRequirementsView(screenSections[2]);
     var currentPlan = new CurrentPlan(screenSections[0]);
     currentPlan.showTerms(GetTermsForTesting());
+    generateCourseBrowser(screenSections[1], currentPlan);
+    generateRequirementsView(screenSections[2]);
 
 }
 </script>

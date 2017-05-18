@@ -1,10 +1,10 @@
-function generateCourseBrowser(element){
+function generateCourseBrowser(element, currentPlan){
 	var courses = document.createElement("div");
 	courses.id = "courseblock";
 	courses.classList.add('course-listing-container');
 	element.appendChild(courses);
 
-	var majorDisplay = getMajorDepartment("Computer Science");
+	var majorDisplay = getMajorDepartment("Computer Science", currentPlan);
 	element.appendChild(majorDisplay);
 
 	var info = document.createElement("div");
@@ -49,9 +49,7 @@ function generateCourseBrowser(element){
 function cs(element) {
 	document.getElementById("department-name").textContent="Computer Science";
 	document.getElementById("courses").remove();
-
-	var integer = 1;
-	var majorDisplay = getMajorDepartment("Computer Science", integer);
+	var majorDisplay = getMajorDepartment("Computer Science");
 }
 
 function psych(element) {
@@ -68,7 +66,7 @@ function econ(element) {
 	var majorDisplay = getMajorDepartment("Economics");
 }
 
-function getMajorDepartment(department){
+function getMajorDepartment(department, currentPlan){
 	var courses = document.getElementById('courseblock');
 	var coursesDisplay = document.createElement("div");
 	coursesDisplay.id = "courses"
@@ -107,32 +105,49 @@ function getMajorDepartment(department){
 
 		    //call this function on every dragmove event
 		    onmove: dragMoveListener,
-		    ondragend: dragMoveEnd
+		    //ondrag: "sendcom()",
+		    onend: dragEndListener,
+
+            onstart: function (event) {
+    			var target = event.target;
+        		x = (parseFloat(target.getAttribute('data-x')) || 0);
+
+        		y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+
+                event.target.setAttribute('data-start-x', x);
+                event.target.setAttribute('data-start-y', y);
+            }
 		});
+		function sendcom (event) {
+			console.log("here");
+		    currentPlan.notifyHoveringClass(event.clientX,event.clientY);
+		}
 
 		function dragMoveListener (event) {
     		var target = event.target,
         		// keep the dragged position in the data-x/data-y attributes
         		x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
         		y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+		    currentPlan.notifyHoveringClass(event.clientX,event.clientY);
 
 		    // translate the element
 		    target.style.webkitTransform =
 		    target.style.transform =
 		    'translate(' + x + 'px, ' + y + 'px)';
-		    notifyHoveredClass(x,y);
+
 		    // update the posiion attributes
 		    target.setAttribute('data-x', x);
 		    target.setAttribute('data-y', y);
 		}
-		function dragMoveEnd(event) {
+		function dragEndListener (event) {
     		var target = event.target,
         		// keep the dragged position in the data-x/data-y attributes
         		x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
         		y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
         	var name = this.textContent;
-        	if (notifyDroppedClass(x,y,name)) {
+			if (currentPlan.notifyDroppedClass(event.clientX,event.clientY,name)) {
         		// remove element from course list
         		for (var i = 0; i < arrayLength; i++) {
         			if ( myStringArray[i].equals(name) ) {
@@ -142,6 +157,9 @@ function getMajorDepartment(department){
         		// update course list
         		document.getElementById("department-name").click();
         	} else {
+        		target.setAttribute('data-x', event.target.getAttribute('data-start-y'));
+        		target.setAttribute('data-y', event.target.getAttribute('data-start-y'));
+        		//console.log(document.getElementById("department-name").textContent);
         		document.getElementById("department-name").click();
         	}
 		}

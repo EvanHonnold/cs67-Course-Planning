@@ -184,7 +184,6 @@ function makeElemWithClass(tag, className){
 	return elem;
 }
 
-
 function GetTermsForTesting(){
 	var terms = new Array();
 	terms.push(new Term(new Season("winter"), new Number(2016)));

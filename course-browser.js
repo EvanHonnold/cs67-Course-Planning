@@ -1,5 +1,13 @@
 function generateCourseBrowser(element, currentPlan){
 	var currentPlan = currentPlan;
+
+	var cselement = document.getElementById("cse");
+	var psychelement = document.getElementById("psyche");
+	var econelement = document.getElementById("econe")
+
+	cselement.onclick = cs;
+	psychelement.onclick = psych;
+	econelement.onclick = econ;
 	var courses = document.createElement("div");
 	courses.id = "courseblock";
 	courses.classList.add('course-listing-container');
@@ -151,7 +159,7 @@ function generateCourseBrowser(element, currentPlan){
 				if (currentPlan.notifyDroppedClass(event.clientX,event.clientY,event.target.textContent)) {
 	        		// remove element from course list
 	        		for (var i = 0; i < arrayLength; i++) {
-	        			if ( myStringArray[i].equals(name) ) {
+	        			if ( myStringArray[i].equals(event.target.textContent) ) {
 	        				myStringArray.splice(i, 1);
 	        			}
 	        		}

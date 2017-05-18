@@ -1,15 +1,19 @@
 var compInfoArray = [{
   "id": 5,
-  "cityname": "Paris",
+  "cityname": "Fall",
   "area": "FR"
 }, {
   "id": 8,
-  "cityname": "London",
+  "cityname": "Winter",
   "area": "UK"
 }, {
   "id": 12,
-  "cityname": "Berlin",
+  "cityname": "Spring",
   "area": "GER"
+}, {
+  "id": 13,
+  "cityname": "Summer",
+  "area": "G"
 }];
 
 function showname() {

@@ -243,7 +243,7 @@ function generateCourseBrowser(element, currentPlan){
 				courseprereqs1.appendChild(prereqs);
 				info.style.display = 'block';
 			});
-			children[i].addEventListener("mouseout", function(){
+			/*children[i].addEventListener("mouseout", function(){
 				var info = document.getElementById('popup');
 				var coursetitle1 = document.getElementById("coursetitle");
 				var courseinfo1 = document.getElementById("courseinfo");
@@ -258,7 +258,7 @@ function generateCourseBrowser(element, currentPlan){
 				courseinstructor1.innerHTML = '';
 				courseprereqs1.innerHTML = '';
 				info.style.display = 'none';
-			});
+			});*/
 		}
 			
 		return courses;

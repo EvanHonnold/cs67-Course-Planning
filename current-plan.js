@@ -5,22 +5,9 @@
  */
 
 function CurrentPlan(screenSection){
+
 	var currentPlan = this;
 	this.termDisplays = new Array();
-
-	/// UNDER CONSTRUCTION:
-
-
-
-	//// NOTE: this is for testing - REMOVE WHEN DONE
-
-	/*
-	document.addEventListener("click", function(e){
-		currentPlan.notifyDroppedClass(e.pageX, e.pageY, "sdfgsdfgsdFGsdf");
-	});
-	*/
-
-	/////////// END TESTING
 
 	// adds in the title
 	screenSection.appendChild(makeElemWithText("h1", "Current Plan"));
@@ -213,6 +200,8 @@ function CurrentPlan(screenSection){
 
 					// create an html element to hold the course box while it's dragging:
 					var boxFloater = makeElemWithClass("div", "course-box-floater");
+					boxFloater.style.left = rect.left + "px";
+					boxFloater.style.top = rect.top + "px";
 					document.getElementsByTagName("body")[0].appendChild(boxFloater);
 					boxFloater.appendChild(courseBoxes[0]);
 

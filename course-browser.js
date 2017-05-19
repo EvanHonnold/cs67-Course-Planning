@@ -1,5 +1,19 @@
-function generateCourseBrowser(element, currentPlan){
-	var currentPlan = currentPlan;
+
+
+function assignCallbacks(screenSection){
+	/*
+	var currSlots = screenSection.getElementsByClassName("course-slot");
+	for (var i = 0; i < currSlots.length; i++){
+		var mSlot = currSlots[i];
+		mSlot.onmouseup = function(event){
+			var mContent = mSlot.children[0].textContent;
+			console.log("Content:" + mContent);
+		}
+	}
+	*/
+}
+
+function generateCourseBrowser(element){
 
 	var cselement = document.getElementById("cse");
 	var psychelement = document.getElementById("psyche");
@@ -13,8 +27,9 @@ function generateCourseBrowser(element, currentPlan){
 	courses.classList.add('course-info-container');
 	element.appendChild(courses);
 
-	var majorDisplay = getMajorDepartment("Computer Science", currentPlan);
+	var majorDisplay = getMajorDepartment("Computer Science");
 	element.appendChild(majorDisplay);
+	assignCallbacks(element);
 
 	var info = document.createElement("div");
 	info.id = "popup";
@@ -57,24 +72,27 @@ function generateCourseBrowser(element, currentPlan){
 	function cs(element) {
 		document.getElementById("department-name").textContent="Computer Science";
 		document.getElementById("courses").remove();
-		var majorDisplay = getMajorDepartment("Computer Science", currentPlan);
+		var majorDisplay = getMajorDepartment("Computer Science");
+		assignCallbacks(element);
 	}
 
 	function psych(element) {
 		document.getElementById("department-name").textContent="Psychological and Brain Sciences";
 		document.getElementById("courses").remove();
 
-		var majorDisplay = getMajorDepartment("Psychological and Brain Sciences", currentPlan);
+		var majorDisplay = getMajorDepartment("Psychological and Brain Sciences");
+		assignCallbacks(element);
 	}
 
 	function econ(element) {
 		document.getElementById("department-name").textContent="Economics";
 		document.getElementById("courses").remove();
 
-		var majorDisplay = getMajorDepartment("Economics", currentPlan);
+		var majorDisplay = getMajorDepartment("Economics");
+		assignCallbacks(element);
 	}
 
-	function getMajorDepartment(department, currentPlan){
+	function getMajorDepartment(department){
 		var courses = document.getElementById('courseblock');
 		var coursesDisplay = document.createElement("div");
 		coursesDisplay.id = "courses"
@@ -85,7 +103,7 @@ function generateCourseBrowser(element, currentPlan){
 		courses_dictionary={ 
 		    "Computer Science":["COSC 1 - Intro to Programming and Computation","COSC 10 - Problem Solving via Object-Oriented Programming", "COSC 30 - Discrete Mathematics","COSC 31 - Algorithms", "COSC 35 - Data Stream Algorithms", "COSC 39 - Theory of Computation", "COSC 50 - Software Development and Implementation", "COSC 51 - Computer Architecture","COSC 67 - Introduction to Human-Computer Interaction","COSC 73 - Computational Linguistics","COSC 74 - Machine Learning and Statistical Data Analysis","COSC 87 - Rendering Algorithms"],    
 		    "Psychological and Brain Sciences":["PSYC 1- Intro to psychology","PSYC 6 - Intro to Neuroscience","PSYC 10 - Statistics","PSYC 11 - Laboratory in Psychological Science","PSYC 21 - Perception","PSYC 23 - Social Psychology","PSYC 50.01 - Neuroscience of Mental Illness","PSYC 60 - Principles of Human Brain Mapping with fMRI","PSYC 80.03 - Spatial Cognition and Navigation: A Neurobiological Perspective","PSYC 81.07 - Decoding Human Brain Activity","PSYC 83.03 - The Self"],
-		    "Economics":["ECON 1 - Intro to Economics", "ECON 10 - Statistics", "ECON 35 - Game Theoy"]
+		    "Economics":["ECON 1 - Intro to Economics", "ECON 10 - Statistics", "ECON 35 - Game Theory"]
 		};
 
 		var myStringArray = courses_dictionary[department];
@@ -101,20 +119,71 @@ function generateCourseBrowser(element, currentPlan){
 			course1.appendChild(courseBox);
 			courseBox.appendChild(text1);
 
-			// Evan: I wrote my own dragging code that can be used instead (more in current-plan.js):			
-			var slot = course1;
+			coursesDisplay.appendChild(course1);
 
-			slot.onmouseup = function(event){
+			// Evan: I wrote my own dragging code that can be used instead (more in current-plan.js):			
+
+			//course1.onmouseup = createMouseUpCallback(course1);
+			course1.onmouseup = makeMouseup(course1);
+			course1.onmousedown = makeMousedown(course1);
+
+			function makeMouseup(currSlot){
+				return function(event){
+					if (draggedElement){
+						currSlot.appendChild(draggedElement.children[0]);
+						draggedElement.remove();
+						draggedElement = null;
+					}
+				}
+			}
+			function makeMousedown(currSlot){
+				return function(event){
+					// check if there's a class in the slot:
+					var courseBoxes = currSlot.getElementsByClassName("course-box");
+					if (courseBoxes.length > 0){
+						// get the offset, so the dragged item appears in the right place
+						// relative to the cursor:
+						var rect = courseBoxes[0].getBoundingClientRect();
+
+						// create an html element to hold the course box while it's dragging:
+						var boxFloater = makeElemWithClass("div", "course-box-floater");
+						boxFloater.style.left = rect.left + "px";
+						boxFloater.style.top = rect.top + "px";
+						document.getElementsByTagName("body")[0].appendChild(boxFloater);
+						boxFloater.appendChild(courseBoxes[0]);
+
+						// store the offset inside the HTML element:
+						boxFloater.offsetX = rect.left - event.pageX;
+						boxFloater.offsetY = rect.top - event.pageY;
+
+						currSlot.classList.add("dragged-course-slot");
+
+						// allow the floater to move on mouse position change:
+						draggedElement = boxFloater;
+						document.addEventListener("mousemove", mouseMovedWhileDragging);
+						document.addEventListener("mouseup", mouseReleasedWhileDragging);
+					}
+				}
+			}
+
+			/*
+			course1.onmouseup = function(event){
 				if (draggedElement){
-					slot.appendChild(draggedElement.children[0]);
+					course1.appendChild(draggedElement.children[0]);
 					draggedElement.remove();
 					draggedElement = null;
 				}
 			}
 			
-			slot.onmousedown = function(event){
+			//console.log("onmousedown assigned :" + course1.children[0].textContent);
+
+			course1.onmousedown = function(event){
+
+				console.log("onmousedown called:" + course1.children[0].textContent);
+				console.log("coords: " + event.pageX + ", " + event.pageY);
+
 				// check if there's a class in the slot:
-				var courseBoxes = slot.getElementsByClassName("course-box");
+				var courseBoxes = course1.getElementsByClassName("course-box");
 				if (courseBoxes.length > 0){
 
 					// get the offset, so the dragged item appears in the right place
@@ -130,7 +199,7 @@ function generateCourseBrowser(element, currentPlan){
 					boxFloater.offsetX = rect.left - event.pageX;
 					boxFloater.offsetY = rect.top - event.pageY;
 
-					slot.classList.add("dragged-course-slot");
+					course1.classList.add("dragged-course-slot");
 
 					// allow the floater to move on mouse position change:
 					draggedElement = boxFloater;
@@ -138,7 +207,7 @@ function generateCourseBrowser(element, currentPlan){
 					document.addEventListener("mouseup", mouseReleasedWhileDragging);
 				}
 			}
-
+			*/
 
 			/*
 
@@ -214,13 +283,13 @@ function generateCourseBrowser(element, currentPlan){
 
 			*/
 
-			coursesDisplay.appendChild(course1);
 		}
 
 		var courselist= document.getElementById("courses");
 		var children = courselist.children;
 		for (var i = 0; i < children.length; i++) {
-			console.log(children[i].textContent);
+			
+			
 			children[i].addEventListener("mouseover", function(){
 				var info = document.getElementById('popup');
 
@@ -291,6 +360,8 @@ function generateCourseBrowser(element, currentPlan){
 				courseprereqs1.appendChild(prereqs);
 				info.style.display = 'block';
 			});
+
+			 
 			/*children[i].addEventListener("mouseout", function(){
 				var info = document.getElementById('popup');
 				var coursetitle1 = document.getElementById("coursetitle");
@@ -312,5 +383,21 @@ function generateCourseBrowser(element, currentPlan){
 		return courses;
 
 	}
+
+}
+
+function createMouseUpCallback(element){
+	var mElem = element;
+	return function(){
+		console.log(mElem.children[0].textContent);
+		if (draggedElement){
+			mElem.appendChild(draggedElement.children[0]);
+			draggedElement.remove();
+			draggedElement = null;
+		}
+	};
+}
+
+function createMouseDownCallback(element){
 
 }

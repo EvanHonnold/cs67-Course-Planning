@@ -3,6 +3,9 @@ function generateRequirementsView(element){
   var csreqDisplay = getCSRequirementsDisplay();
   element.appendChild(csreqDisplay);
 
+  var minorreqDisplay = getpMinorDisplay();
+  element.appendChild(minorreqDisplay);
+
   // var preqDisplay = getPRequirementsDisplay();
   // element.appendChild(preqDisplay);
 
@@ -59,6 +62,9 @@ var Requirementscontainer = document.getElementsByClassName("main-out-container"
   var distributives= document.getElementsByClassName("first-2")[0];
   distributives.textContent="Distributives and World Culture Requirement";
 
+  var minor= document.getElementsByClassName("first-3")[0];
+  minor.textContent="Minor";
+
    var req1= document.getElementsByClassName("first-a")[0];
    req1.textContent="Prerequisites COSC 1 and COSC 10";
 
@@ -96,6 +102,7 @@ var Requirementscontainer = document.getElementsByClassName("main-out-container"
 
    var fulreq5= document.getElementsByClassName("second-e")[0];
    fulreq5.textContent="0/3";
+
 return Requirementscontainer;
 }
 
@@ -196,7 +203,39 @@ function getPRequirementsDisplay(){
 
       return ERequirementscontainer;
  }
- 
+
+
+function getpMinorDisplay(){
+  var minorcontainer = document.getElementsByClassName("main-out-container")[0];
+
+    var minordisplay= document.getElementsByClassName("first")[0];
+
+    minorcontainer.appendChild(minordisplay);
+
+    var mreq1= document.getElementsByClassName("minor-a")[0];
+    mreq1.textContent="Prerequisites: PSYCH 1";
+
+    var mreq2= document.getElementsByClassName("minor-b")[0];
+    mreq2.textContent="Two PSYCH courses numbered 50 or above";
+
+    var mreq3= document.getElementsByClassName("minor-c")[0];
+    mreq3.textContent="Three PSYCH course electives numbered 11-88";
+
+
+    var minorfulfilleddisplay= document.getElementsByClassName("second")[0];
+    minorcontainer.appendChild(minorfulfilleddisplay);
+
+    var minreq1= document.getElementsByClassName("minorsecond-a")[0];
+    minreq1.textContent="0/1";
+
+    var minreq2= document.getElementsByClassName("minorsecond-b")[0];
+    minreq2.textContent="0/2";
+
+    var minreq3= document.getElementsByClassName("minorsecond-c")[0];
+    minreq3.textContent="0/3";
+
+    return minorcontainer;
+}
 function updateReqs(course){
   var number = course.name;
   var reqs = ["second-a", "second-b", "second-c", "second-d", "second-e"];

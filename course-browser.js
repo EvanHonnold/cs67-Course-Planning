@@ -92,11 +92,56 @@ function generateCourseBrowser(element, currentPlan){
 		var arrayLength = myStringArray.length;
 		for (var i = 0; i < arrayLength; i++) {
 			var course1 = document.createElement("div");
-			course1.classList.add("course1-box");
-			course1.classList.add("draggable");
+			course1.classList.add("course-slot");
 			var text1 = document.createTextNode(myStringArray[i]);
 			course1.id = i;
-			course1.appendChild(text1);
+
+			// added by Evan (along with some changes above):
+			var courseBox = makeElemWithClass("div", "course-box");
+			course1.appendChild(courseBox);
+			courseBox.appendChild(text1);
+
+			// Evan: I wrote my own dragging code that can be used instead (more in current-plan.js):			
+			var slot = course1;
+
+			slot.onmouseup = function(event){
+				if (draggedElement){
+					slot.appendChild(draggedElement.children[0]);
+					draggedElement.remove();
+					draggedElement = null;
+				}
+			}
+			
+			slot.onmousedown = function(event){
+				// check if there's a class in the slot:
+				var courseBoxes = slot.getElementsByClassName("course-box");
+				if (courseBoxes.length > 0){
+
+					// get the offset, so the dragged item appears in the right place
+					// relative to the cursor:
+					var rect = courseBoxes[0].getBoundingClientRect();
+
+					// create an html element to hold the course box while it's dragging:
+					var boxFloater = makeElemWithClass("div", "course-box-floater");
+					document.getElementsByTagName("body")[0].appendChild(boxFloater);
+					boxFloater.appendChild(courseBoxes[0]);
+
+					// store the offset inside the HTML element:
+					boxFloater.offsetX = rect.left - event.pageX;
+					boxFloater.offsetY = rect.top - event.pageY;
+
+					slot.classList.add("dragged-course-slot");
+
+					// allow the floater to move on mouse position change:
+					draggedElement = boxFloater;
+					document.addEventListener("mousemove", mouseMovedWhileDragging);
+					document.addEventListener("mouseup", mouseReleasedWhileDragging);
+				}
+			}
+
+
+			/*
+
 			// target elements with the "draggable" class
 			interact('.draggable')
 			.draggable({
@@ -166,6 +211,9 @@ function generateCourseBrowser(element, currentPlan){
 	        		cs(currentPlan);
 	        	}
 			}
+
+			*/
+
 			coursesDisplay.appendChild(course1);
 		}
 

@@ -180,6 +180,7 @@ function CurrentPlan(screenSection){
 			}
 
 			var slot = courseSlot.courseBox;
+			
 			slot.onmouseup = function(event){
 				if (draggedElement){
 					slot.children[0].style.display = "none";
@@ -187,8 +188,8 @@ function CurrentPlan(screenSection){
 					draggedElement.remove();
 					draggedElement = null;
 				}
-
 			}
+			
 			slot.onmousedown = function(event){
 				// check if there's a class in the slot:
 				var courseBoxes = slot.getElementsByClassName("course-box");
@@ -265,27 +266,31 @@ function mouseReleasedWhileDragging(event){
 	document.removeEventListener("mousemove", mouseMovedWhileDragging);
 	document.removeEventListener("mouseup", mouseReleasedWhileDragging);
 
-	// deselect the place where the dragged element came from:
-	var elems = document.getElementsByClassName("dragged-course-slot");
-	for (var i = 0; i < elems.length; i++){
-		elems[i].children[0].style.display = "";
-		elems[i].classList.remove("dragged-course-slot");
-	}
+	// get a reference to th slot where the dragged course came from:
+	var initSlot = document.getElementsByClassName("dragged-course-slot")[0];
 
 	// check whether the element was dropped over an empty slot
 	var highlightedSlots = document.getElementsByClassName("highlighted-course-slot");
 	if (highlightedSlots.length == 1){
 		highlightedSlots[0].onmouseup(event);
+
+		// make the "drag and drop here" message visible again
+		// at the source element:
+		if (highlightedSlots[0] != initSlot && initSlot.children.length > 0)
+			initSlot.children[0].style.display = "";
+
 		highlightedSlots[0].classList.remove("highlighted-course-slot");
 	}
+	else {
+		// if we got here, the element wasn't successfully dropped,
+		// so return it to its original place
+		initSlot.onmouseup(null);
+	}
 
-	// if we got here, the element wasn't successfully dropped
-
+	// deselect the place where the dragged element came from:
+	initSlot.classList.remove("dragged-course-slot");
 }
 
-
-
-//var elementBeingDragged = makeElemWithClass
 
 function makeElemWithText(tag, text){
 	var elem = document.createElement(tag);

@@ -3,7 +3,6 @@ toggle between hiding and showing the dropdown content */
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
@@ -17,16 +16,15 @@ window.onclick = function(event) {
       }
     }
   }
-
-  $(document).ready(function () {
-
-     $('#category').on('change', function () {
-         var myValue = $(this).val();
-         var myText = $.trim($("#category :selected").text()).toLowerCase(); // Trim spaces and convert to lowercase for comparison
-
-         $("#otherCategory").toggle(myText === 'other');
-     });
- });
-
-
 }
+
+//store the value of the dropdown selection
+function storeValue(obj){
+    if(obj.selectedIndex == 0){return;}
+    var major = obj.value;
+    alert('Selected Is:  '+ major);
+}
+  window.onload = function(){
+  document.getElementsByName('Majors')[0].onchange=function(){storeValue(this);}
+  document.getElementsByName('Minors')[0].onchange=function(){storeValue(this);}
+  }

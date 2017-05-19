@@ -45,6 +45,24 @@ and the classes listed under that term */
     padding-right:5px;
 }
 
+.term-listing-off-campus {
+    background-color:#F5F5F5;
+    height:40px;
+    flex:1;
+    text-align:center;
+    margin-left: 79px;
+    margin-right: 5px;
+}
+
+.term-listing-off-campus-text{
+    font-style:italic;
+    line-height:40px;
+    text-align:center;
+    display:inline-block;
+    color:#757575;
+    user-select:none;
+}
+
 .course-box{
     background-color: #C8E6C9;
     white-space: nowrap;

@@ -89,25 +89,37 @@ function CurrentPlan(screenSection){
 		var termListingContainer = makeElemWithClass("div", "term-listing-container");
 		parentElement.appendChild(termListingContainer);
 
-		// left part (the term)
-		var termListingTermName = makeElemWithClass("div", "term-listing-term-name");
-		termListingContainer.appendChild(termListingTermName);
-		var topDiv = document.createElement("div");
-		topDiv.style.flex = 0.5;
-		termListingTermName.appendChild(topDiv);
-		var termListingTermNameText = makeElemWithClass("div","term-listing-term-name-text");
-		termListingTermName.appendChild(termListingTermNameText);
-		termListingTermNameText.textContent = term.toString();
-		var btmDiv = topDiv.cloneNode();
-		termListingTermName.appendChild(btmDiv);
+		if (term.onCampus){
 
-		// right part (the set of slots for courses)
-		var termListingCoursesContainer = makeElemWithClass("div", "term-listing-courses-container");
-		termListingContainer.appendChild(termListingCoursesContainer);
-		for (var i = 0; i < 3; i++){
-			this.courseSlots.push(new CourseSlot(termListingCoursesContainer));
-			if (i < 2)
-				termListingCoursesContainer.appendChild(makeElemWithClass("div", "course-box-divider"));
+			// left part (the term)
+			var termListingTermName = makeElemWithClass("div", "term-listing-term-name");
+			termListingContainer.appendChild(termListingTermName);
+			var topDiv = document.createElement("div");
+			topDiv.style.flex = 0.5;
+			termListingTermName.appendChild(topDiv);
+			var termListingTermNameText = makeElemWithClass("div","term-listing-term-name-text");
+			termListingTermName.appendChild(termListingTermNameText);
+			termListingTermNameText.textContent = term.toString();
+			var btmDiv = topDiv.cloneNode();
+			termListingTermName.appendChild(btmDiv);
+
+			// right part (the set of slots for courses)
+			var termListingCoursesContainer = makeElemWithClass("div", "term-listing-courses-container");
+			termListingContainer.appendChild(termListingCoursesContainer);
+			for (var i = 0; i < 3; i++){
+				new CourseSlot(termListingCoursesContainer);
+				if (i < 2)
+					termListingCoursesContainer.appendChild(makeElemWithClass("div", "course-box-divider"));
+			}
+		}
+		else {
+
+			// if the student is off campus:
+			var offtermDisplay = makeElemWithClass("div", "term-listing-off-campus");
+			var displayText = makeElemWithClass("span", "term-listing-off-campus-text");
+			displayText.textContent = "off-term";
+			offtermDisplay.appendChild(displayText);
+			termListingContainer.appendChild(offtermDisplay);
 		}
 
 		/////////// END of HTML GENERATION ////////////////
@@ -297,11 +309,11 @@ function makeElemWithClass(tag, className){
 
 function GetTermsForTesting(){
 	var terms = new Array();
-	terms.push(new Term(new Season("winter"), new Number(2016)));
-	terms.push(new Term(new Season("spring"), new Number(2016)));
-	terms.push(new Term(new Season("summer"), new Number(2016)));
-	terms.push(new Term(new Season("fall"), new Number(2016)));
-	terms.push(new Term(new Season("winter"), new Number(2017)));
+	terms.push(new Term(new Season("winter"), new Number(2016), true));
+	terms.push(new Term(new Season("spring"), new Number(2016), true));
+	terms.push(new Term(new Season("summer"), new Number(2016), false));
+	terms.push(new Term(new Season("fall"), new Number(2016), true));
+	terms.push(new Term(new Season("winter"), new Number(2017), false));
 	return terms;
 }
 

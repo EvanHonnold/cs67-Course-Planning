@@ -22,6 +22,7 @@ window.onclick = function(event) {
 function storeValue(obj){
     if(obj.selectedIndex == 0){return;}
     var major = obj.value;
+    console.log('saves');
     alert('Selected Is:  '+ major);
 }
   window.onload = function(){

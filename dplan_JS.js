@@ -29,6 +29,7 @@ Array.prototype.contains = function(needle) {
 function storeValue(obj){
     if(obj.selectedIndex == 0){return;}
     var term = obj.value;
+    console.log('ugh');
     alert('Selected Is:  '+ term);
 }
   window.onload = function(){
@@ -46,31 +47,31 @@ function storeValue(obj){
   document.getElementById('term12')[0].onchange=function(){storeValue(this);}
   }
 
-  function saveData(){
-    localStorage["term1"] = document.getElementsByName("term1").value;
-    localStorage["term2"] = document.getElementsByName("term2").value;
-    localStorage["term3"] = document.getElementsByName("term3").value;
-    localStorage["term4"] = document.getElementsByName("term4").value;
-    localStorage["term5"] = document.getElementsByName("term5").value;
-    localStorage["term6"] = document.getElementsByName("term6").value;
-    localStorage["term7"] = document.getElementsByName("term7").value;
-    localStorage["term8"] = document.getElementsByName("term8").value;
-    localStorage["term9"] = document.getElementsByName("term9").value;
-    localStorage["term10"] = document.getElementsByName("term10").value;
-    localStorage["term11"] = document.getElementsByName("term11").value;
-    localStorage["term12"] = document.getElementsByName("term12").value;
-    localStorage["term13"] = document.getElementsByName("term13").value;
-    localStorage["term14"] = document.getElementsByName("term14").value;
-  }
-
-	window.onload = function(){
-		subject = parseInt(localStorage["subject"]);
-		var trials = parseInt(localStorage["trials"]);
-		var amplitudes = JSON.parse("[" + localStorage["amplitudes"] + "]");
-		var widths = JSON.parse("[" + localStorage["widths"] + "]");
-		var indices = JSON.parse("[" + localStorage["indices"] + "]");
-
-		conditionList = getConditionList(amplitudes, widths, trials);
+  // function saveData(){
+  //   localStorage["term1"] = document.getElementsByName("term1").value;
+  //   localStorage["term2"] = document.getElementsByName("term2").value;
+  //   localStorage["term3"] = document.getElementsByName("term3").value;
+  //   localStorage["term4"] = document.getElementsByName("term4").value;
+  //   localStorage["term5"] = document.getElementsByName("term5").value;
+  //   localStorage["term6"] = document.getElementsByName("term6").value;
+  //   localStorage["term7"] = document.getElementsByName("term7").value;
+  //   localStorage["term8"] = document.getElementsByName("term8").value;
+  //   localStorage["term9"] = document.getElementsByName("term9").value;
+  //   localStorage["term10"] = document.getElementsByName("term10").value;
+  //   localStorage["term11"] = document.getElementsByName("term11").value;
+  //   localStorage["term12"] = document.getElementsByName("term12").value;
+  //   localStorage["term13"] = document.getElementsByName("term13").value;
+  //   localStorage["term14"] = document.getElementsByName("term14").value;
+  // }
+  //
+	// window.onload = function(){
+	// 	subject = parseInt(localStorage["subject"]);
+	// 	var trials = parseInt(localStorage["trials"]);
+	// 	var amplitudes = JSON.parse("[" + localStorage["amplitudes"] + "]");
+	// 	var widths = JSON.parse("[" + localStorage["widths"] + "]");
+	// 	var indices = JSON.parse("[" + localStorage["indices"] + "]");
+  //
+	// 	conditionList = getConditionList(amplitudes, widths, trials);
 
 		/*console.log("subj: " + subject);
 		console.log("trials: " + trials);

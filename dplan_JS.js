@@ -16,6 +16,11 @@ var compInfoArray = [{
   "area": "G"
 }];
 
+function updateText(type) {
+ var id = type+'Text';
+ document.getElementById(id).value = document.getElementById(type).value;
+}
+
 function showname() {
   var id = document.form1.id.value;
   var index = compInfoArray.contains(id);

@@ -14,74 +14,164 @@
       <h1>In order to continue, we will need some information about your DPLAN.</h1>
       <h5>Please Select Which Terms You Will Be On Campus From the Dropdown Menu Below</h5>
 
-      <form name="form1">
+      <script src="dplan_JS.js"></script>
 
-          <select name="id" onChange="showname()">
+        <form id="example" name="example">
 
-             <option  value="Paris">Fall</option>
-             <option  value="London">Winter</option>
-             <option  value="Berlin">Spring</option>
-             <option  value="Berlin">Summer</option>
-
+          <select id="term1" onchange="updateText('term1')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
           </select>
-          <label>
-            <center>
-              <input type="text" name="cityname" value="" />
-              <input type="text" name="area" value="" />
-              <input type="text" name="term3" value="" />
-              <input type="text" name="term4" value="" />
-              <input type="text" name="term5" value="" />
-              <input type="text" name="term6" value="" />
-              <input type="text" name="term7" value="" />
-              <input type="text" name="term8" value="" />
-              <input type="text" name="term9" value="" />
-              <input type="text" name="term10" value="" />
-              <input type="text" name="term11" value="" />
-              <input type="text" name="term12" value="" />
-            </center>
-          </label>
+
+          <input type="text" value="" id="term1Text" />
+
+          <br></br>
+
+          <select id="term2" onchange="updateText('term2')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term2Text" />
+
+          <br></br>
+
+          <select id="term3" onchange="updateText('term3')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term3Text" />
+
+          <br></br>
+
+          <select id="term4" onchange="updateText('term4')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term4Text" />
+
+          <br></br>
+
+          <select id="term5" onchange="updateText('term5')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term5Text" />
+
+          <br></br>
+
+          <select id="term6" onchange="updateText('term6')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term6Text" />
+
+          <br></br>
+
+          <select id="term7" onchange="updateText('term7')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term7Text" />
+
+          <br></br>
+
+          <select id="term8" onchange="updateText('term8')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term8Text" />
+
+          <br></br>
+
+          <select id="term9" onchange="updateText('term9')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term9Text" />
+
+          <br></br>
+
+          <select id="term10" onchange="updateText('term10')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term10Text" />
+
+          <br></br>
+
+          <select id="term11" onchange="updateText('term11')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term11Text" />
+
+          <br></br>
+
+          <select id="term12" onchange="updateText('term12')">
+            <option selected disabled>Choose one</option>
+            <option value="Fall 2016">Fall 2016</option>
+            <option value="Winter 2017">Winter 2017</option>
+            <option value="Spring 2017">Spring 2017</option>
+            <option value="Summer 2017">Summer 2017</option>
+          </select>
+
+          <input type="text" value="" id="term12Text" />
+
+          <br />
 
       </form>
 
-      <form name="form2">
+      <!--Local storage of the browser!-->
+      <!--Added an empty paragraph to push "Continue" button to the bottom.-->
+      <p></p>
 
-          <select name="id" onChange="showname()">
+       <a href="main-screen.html"><button>Submit</button></a>
 
-             <option  value="Paris">Class 1</option>
-             <option  value="London">Class 2</option>
-             <option  value="Berlin">Class 3</option>
-             <option  value="Berlin">Class 4</option>
-
-          </select>
-          <label>
-            <center>
-              <input type="text" name="cityname" value="" />
-              <input type="text" name="area" value="" />
-              <input type="text" name="term3" value="" />
-              <input type="text" name="term4" value="" />
-              <input type="text" name="term5" value="" />
-              <input type="text" name="term6" value="" />
-              <input type="text" name="term7" value="" />
-              <input type="text" name="term8" value="" />
-              <input type="text" name="term9" value="" />
-              <input type="text" name="term10" value="" />
-              <input type="text" name="term11" value="" />
-              <input type="text" name="term12" value="" />
-            </center>
-          </label>
-
-      </form>
-
-<!--Local storage of the browser!-->
-   <!--Added an empty paragraph to push "Continue" button to the bottom.-->
-   <p></p>
-
-   <a class="btn" href=""></a>
-    <button class="btn" type="submit">Submit</button>
-
-
-  </font> `````
+    </font>
     </center>
-  </body>
 
+  </body>
 </html>

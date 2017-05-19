@@ -301,9 +301,15 @@ function GetTermsForTesting(){
 	var terms = new Array();
 	terms.push(new Term(new Season("winter"), new Number(2016), true));
 	terms.push(new Term(new Season("spring"), new Number(2016), true));
-	terms.push(new Term(new Season("summer"), new Number(2016), false));
+	terms.push(new Term(new Season("summer"), new Number(2016), true));
 	terms.push(new Term(new Season("fall"), new Number(2016), true));
 	terms.push(new Term(new Season("winter"), new Number(2017), false));
+	terms.push(new Term(new Season("spring"), new Number(2017), true));
+	terms.push(new Term(new Season("summer"), new Number(2017), false));
+	terms.push(new Term(new Season("fall"), new Number(2017), true));
+	terms.push(new Term(new Season("winter"), new Number(2018), true));
+	terms.push(new Term(new Season("spring"), new Number(2018), true));
+
 	return terms;
 }
 

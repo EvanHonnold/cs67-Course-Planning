@@ -36,8 +36,7 @@ function generateCourseBrowser(element){
 	element.appendChild(info);
 	info.style.display = 'none';
 	var detail = document.createElement("div");
-	detail.style.backgroundColor = "grey";
-	detail.style.margin = "5px";
+	detail.classList.add("course-detail-header");
 	var text = document.createTextNode("Course Detail");
 	detail.appendChild(text);
 	var coursetitle = document.createElement("div");

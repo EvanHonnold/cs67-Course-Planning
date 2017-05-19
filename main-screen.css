@@ -46,7 +46,7 @@ h3 {
    text-align:center;
 }
 
-.department-dropdown-holder{
+.department-dropdown-holder, .course-detail-header{
     display:flex;
     flex:1;
     background-color:#BDBDBD;
@@ -57,10 +57,20 @@ h3 {
     font-size:95%;
 }
 
+#popup {
+    padding-left:5px;
+    padding-right:5px;   
+    padding-top:5px;
+}
+
 #department-dropdown-button{
     background-color:#BDBDBD;
     border:none;
     outline:0;
+}
+
+#coursetitle {
+    padding-top:3px;
 }
 
 #department-dropdown-contents{
@@ -89,6 +99,7 @@ h3 {
     display:flex;
     flex:1;
 }
+
 
 .info-box{
     background-color: #ffffff;

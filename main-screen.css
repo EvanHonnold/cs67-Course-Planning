@@ -357,6 +357,63 @@ h3 {
 
 }
 
+
+.second-a1{
+  background-color:#008000;
+    flex:1;
+    width:auto;
+    padding-top: 5px;
+    height: 20px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+     text-align: center;
+
+}
+.second-b1{
+  background-color:#008000;
+    flex:1;
+    width:auto;
+    padding-top: 5px;
+    height: 20px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+     text-align: center;
+
+}
+.second-c1{
+  background-color:#008000;
+    flex:1;
+    width:auto;
+    padding-top: 5px;
+    height: 20px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+     text-align: center;
+
+}
+.second-d1{
+  background-color:#008000;
+    flex:1;
+    width:auto;
+    padding-top: 5px;
+    height: 20px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+     text-align: center;
+
+}
+.second-e1{
+  background-color:#008000;
+    flex:1;
+    width:auto;
+    padding-top: 5px;
+    height: 20px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+     text-align: center;
+
+}
+
 /*requirements box*/
 .main-distrib-container{
   flex:1;
@@ -378,5 +435,17 @@ h3 {
     /*margin:20px;*/
     margin-right: 5px;
     background-color: #f08080;
+    text-align: center;
+}
+
+
+.distrib-box2{
+    padding-top: 5px;
+    height: 20px;
+    padding-bottom: 5px;
+    width: 110px;
+    /*margin:20px;*/
+    margin-right: 5px;
+    background-color: #008000;
     text-align: center;
 }

@@ -197,3 +197,64 @@ function getPRequirementsDisplay(){
 
       return ERequirementscontainer;
  }
+ 
+function updateReqs(course){
+  var number = course.name;
+  var reqs = ["second-a", "second-b", "second-c", "second-d", "second-e"];
+  reqDict = new Object();
+  reqDict = {"COSC 1 - Intro to Programming and Computation":["second-a"]
+              "COSC 10 - Problem Solving via Object-Oriented Programming":["second-a"]
+            "COSC 30 - Discrete Mathematics":["second-b", "second-e"]
+            "COSC 31 - Algorithms":["second-b", "second-e"]
+            "COSC 50 - Software Development and Implementation":["second-c", "second-e"]
+            "COSC 51 - Computer Architecture": ["second-c", "second-e"]
+            "COSC 39 - Theory of Computation":["second-b", "second-e"]
+            "COSC 67 - Introduction to Human-Computer Interaction":["second-c", "second-e"]
+            "COSC 73 - Computational Linguistics": ["second-d", "second-e"]
+            "COSC 74 - Machine Learning and Statistical Data Analysis": ["second-d", "second-e"]
+            "COSC 87 - Rendering Algorithms":["second-d", "second-e"]
+            "COSC 51 - Computer Architecture":["second-c", "second-e"]
+            "COSC 35 - Data Stream Algorithms":["second-b", "second-e"]
+  };
+
+  var length = reqs.length;
+  for (var j = 0; j < length; j++ ) {
+    var req = reqs[j];
+    var courselist = reqDict[course.name];
+    var arrayLength = courselist.length;
+    console.log(course.name);
+    for (var i = 0; i < arrayLength; i++) {
+      if (coursename == courselist[i]) {
+        var num = document.getElementsByClassName(req)[0].textContent.charAt(0).parseInt();
+        var newnum = num + 1;
+        if ( newnum != document.getElementsByClassName(req)[0].textContent.charAt(2).parseInt()) {
+          var csreq1 = document.getElementsByClassName(req)[0].textContent = "$newnum/2";
+          if ( newnum == document.getElementsByClassName(req)[0].textContent.charAt(2).parseInt()) {
+            var element = document.getElementByClassName(req)[0];
+            // change color
+            element.classList.add(req+"1");
+            element.classList.remove(req);
+          }
+        } else {
+          continue;
+        }
+      }
+    }
+  }
+
+}
+
+
+// update distribs - loops over all distribs a course satisfies (must be lowercase abbreviation as seen in main-screen.html (id's for distribs)
+//and changes color to green
+function updateDistribs(course){
+  var distriblist = course.distribList;
+  var arrayLength = distriblist.length;
+  for (var i = 0; i < arrayLength; i++) {
+    var distrib = distriblist[i];
+    var element = document.getElementById(distrib);
+    // change color
+    element.classList.add('distrib-box2');
+    element.classList.remove('distrib-box1');
+  }
+}

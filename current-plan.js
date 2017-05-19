@@ -51,8 +51,11 @@ function CurrentPlan(screenSection){
 		var slots = getCourseSlots();
 		for (var i = 0; i < slots.length; i++){
 			var dropSuccess = slots[i].notifyDroppedClass(mouseX, mouseY, courseName);
-			if (dropSuccess)
+			if (dropSuccess) {
+				console.log("Here")
+				updateDistribs("tla");
 				return true;
+			}
 		}
 		return false;
 	}

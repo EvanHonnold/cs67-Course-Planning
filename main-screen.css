@@ -68,27 +68,16 @@ h2 {
     font-size:90%;
 }
 
+#browser-class-listing-container > div {
+    margin-top:2px;
+}
+
 .course-browser-container{
     flex-direction:column;
     margin-left:5px;
     margin-right:5px;
     display:flex;
     flex:1;
-    background-color:#D7CCC8;
-}
-
-.course1-box{
-    background-color: #E0E0E0; 
-    white-space: pre-wrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    margin: 5px;
-    padding-left:3px;
-    padding-right:3px;
-    padding-top:2px;
-    padding-bottom:2px;
-    font-family: 'ApexNewBook',Arial,Sans-serif;
-    font-size:85%;
 }
 
 .info-box{

@@ -33,6 +33,7 @@ and the classes listed under that term */
     text-transform: uppercase;
     font-weight:normal;
     text-align:right;
+    user-select:none;
 }
 
 .term-listing-courses-container {
@@ -61,7 +62,7 @@ and the classes listed under that term */
 
 .course-box-floater {
     position:absolute;
-    width:300px;
+    width:325px;
     height:20px;
 }
 

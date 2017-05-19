@@ -218,16 +218,6 @@ function CurrentPlan(screenSection){
 			}
 		}
 	}
-
-
-
-	/// for testing click and drag
-	var testElem = makeElemWithClass("div", "course-box");
-	testElem.textContent = "sadgsdfgsdfgsd";
-	var testCont = makeElemWithClass("div", "course-box-floater");
-	document.getElementsByTagName("body")[0].appendChild(testCont);
-	testCont.appendChild(testElem);
-	draggedElement = testCont;
 }
 
 // globals for keeping track of click and drag:

@@ -1,1 +1,7 @@
-content of courses file
+DEPT-LISTING:Computer Science:COSC
+1|Intro to Programming and Computation|This course introduces computational concepts that are fundamental to computer science and are useful for the sciences, social sciences, engineering, and digital arts. Students will write their own interactive programs to analyze data, process text, draw graphics, manipulate images, and simulate physical systems. Problem decomposition, program efficiency, and good programming style are emphasized throughout the course.
+DEPT-LISTING:Psychological and Brain Sciences:
+
+DEPT-LISTING:Economics:
+econ1
+econ2

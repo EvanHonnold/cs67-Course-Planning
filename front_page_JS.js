@@ -28,3 +28,8 @@ function storeValue(obj){
   document.getElementsByName('Majors')[0].onchange=function(){storeValue(this);}
   document.getElementsByName('Minors')[0].onchange=function(){storeValue(this);}
   }
+
+function saveData(){
+  localStorage["Majors"] = document.getElementsByName("Majors").value;
+  localStorage["Minors"] = document.getElementsByName("Minors").value;
+}

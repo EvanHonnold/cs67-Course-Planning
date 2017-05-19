@@ -362,8 +362,6 @@ function createMouseUpCallback(element){
 	return function(){
 		console.log(mElem.children[0].textContent);
 		if (draggedElement){
-			updateDistribs("tla");
-			console.log("Here");
 			mElem.appendChild(draggedElement.children[0]);
 			draggedElement.remove();
 			draggedElement = null;

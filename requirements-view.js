@@ -96,7 +96,6 @@ var Requirementscontainer = document.getElementsByClassName("main-out-container"
 
    var fulreq5= document.getElementsByClassName("second-e")[0];
    fulreq5.textContent="0/3";
-updateDistribs("tla");
 return Requirementscontainer;
 }
 

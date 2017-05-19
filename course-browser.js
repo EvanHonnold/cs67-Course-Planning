@@ -1,3 +1,13 @@
+function toggleDeptDropdown(){
+	var menuContents = document.getElementById("department-dropdown-contents");
+	if (menuContents.style.display == "")
+		menuContents.style.display = "block";
+	else{
+		console.log(menuContents.style.display);
+		menuContents.style.display = "";
+		console.log("here");
+	}
+}
 
 
 function assignCallbacks(screenSection){

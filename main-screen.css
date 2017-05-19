@@ -34,7 +34,46 @@ h2 {
    margin-top:0.5em;
    margin-bottom:0.5em;
    text-align:center;
+}
 
+.department-dropdown-holder{
+    display:flex;
+    flex:1;
+    background-color:#BDBDBD;
+    font-family:'ApexNewBook',Arial,Sans-serif;
+    padding-top:3px;
+    padding-bottom:3px;
+    padding-left:5px;
+    font-size:95%;
+}
+
+#department-dropdown-button{
+    background-color:#BDBDBD;
+    border:none;
+}
+
+#department-dropdown-contents{
+    padding:5px;
+    position:absolute;
+    z-index:1;
+    background-color:#F5F5F5;
+    width:100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    display:none;
+}
+
+#department-dropdown-contents > div {
+    font-family:'ApexNewBook',Arial,Sans-serif;
+    font-size:90%;
+}
+
+.course-browser-container{
+    flex-direction:column;
+    margin-left:5px;
+    margin-right:5px;
+    display:flex;
+    flex:1;
+    background-color:#D7CCC8;
 }
 
 .course1-box{

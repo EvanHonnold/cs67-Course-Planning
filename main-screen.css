@@ -1,13 +1,13 @@
 /**
 
 This file contains some of the CSS for the main
-screen.  It doesn't contain all the CSS - some is inline 
-in the HTML document. 
+screen.  It doesn't contain all the CSS - some is inline
+in the HTML document.
 
 Some other CSS is located in current-plan.css, but
 this shouldn't cause a problem as that CSS uses only
-custom classes as identifiers, so it shouldn't 
-affect the other sections. 
+custom classes as identifiers, so it shouldn't
+affect the other sections.
 
 **/
 
@@ -27,6 +27,16 @@ h1 {
 }
 
 h2 {
+   color:#333;
+   font-size: 160%;
+   font-family: 'ApexSerifBook','Georgia', serif;
+   font-weight: normal;
+   margin-top:0.5em;
+   margin-bottom:0.5em;
+   text-align:center;
+}
+
+h3 {
    color:#333;
    font-size: 160%;
    font-family: 'ApexSerifBook','Georgia', serif;
@@ -144,4 +154,180 @@ h2 {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+
+.main-out-container{
+  max width: 900px;
+  height: 700px;
+  margin: 0 auto;
+  display: flex;
+    /*flex-direction: column;*/
+}
+
+.first {
+  /*background-color: #c0dbe2;*/
+  flex:1;
+  flex-basis: 75%;
+
+}
+
+.second{
+  /*background-color: yellow;*/
+  flex:1;
+}
+
+.first-1{
+    background-color:#BDBDBD;
+    flex:1;
+    /*width: 250px;*/
+    width:auto;
+    height: 40px;
+    margin-right: 10px;
+
+}
+
+.first-a{
+    background-color:#E0E0E0;
+    flex:1;
+    /*width: 250px;*/
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
+
+.first-b{
+  background-color: #E0E0E0;
+    flex:1;
+    /*width: 250px;*/
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
+
+.first-c{
+  background-color: #E0E0E0;
+    flex:1;
+    /*width: 250px;*/
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.first-d{
+  background-color: #E0E0E0;
+    flex:1;
+    /*width: 250px;*/
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.first-e{
+  background-color: #E0E0E0;
+    flex:1;
+    /*width: 250px;*/
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.second-1{
+    background-color:#BDBDBD;
+    flex:1;
+    /*width: 250px;*/
+    width:auto;
+    height: 40px;
+
+}
+
+.second-a{
+  background-color: #E0E0E0;
+    flex:1;
+    width:auto;
+    margin-top: 10px;
+    height: 40px;
+
+}
+
+.second-b{
+  background-color: #E0E0E0;
+    flex:1;
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+
+}
+
+.second-c{
+  background-color: #E0E0E0;
+    flex:1;
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+
+}
+
+.second-d{
+  background-color: #E0E0E0;
+    flex:1;
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+
+}
+
+.second-e{
+  background-color:#E0E0E0;
+    flex:1;
+    width:auto;
+    height: 40px;
+    margin-top: 10px;
+
+}
+
+/*requirements box*/
+.main-distrib-container{
+  background-color: #E0E0E0;
+  flex:1;
+  width:auto;
+  height: 320px;
+  margin-top: 10px;
+
+}
+
+/*.main {
+  background-color: #c0dbe2;
+  flex:1;
+  flex-basis: 75%;
+
+}*/
+
+.distrib-box1{
+
+    background-color:#c0dbe2;
+    flex:1;
+    /*flex-basis: 75%;*/
+    /*width: 250px;*/
+    width:auto;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.distrib-box2{
+  background-color:#c0dbe2;
+  flex:1;
+  /*flex-basis: 25%;*/
+  /*width: 250px;*/
+  width:auto;
+  height: 40px;
+  margin-right: 10px;
+
 }

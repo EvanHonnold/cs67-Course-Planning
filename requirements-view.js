@@ -1,170 +1,196 @@
 function generateRequirementsView(element){
 
-
-  var section_title = document.createElement("h3");
-	var title_text = document.createTextNode("Requirements");
-	section_title.appendChild(title_text);
-	element.appendChild(section_title);
-
   var csreqDisplay = getCSRequirementsDisplay();
   element.appendChild(csreqDisplay);
 
-  var preqDisplay = getPRequirementsDisplay();
-  element.appendChild(preqDisplay);
+  // var preqDisplay = getPRequirementsDisplay();
+  // element.appendChild(preqDisplay);
 
-  var ereqDisplay = getERequirementsDisplay();
-  element.appendChild(ereqDisplay);
+  // var ereqDisplay = getERequirementsDisplay();
+  // element.appendChild(ereqDisplay);
+  //
+  // var cselement = document.getElementById("cse");
+  // cselement.onclick = csreq;
+  //
+  // var psychelement = document.getElementById("psyche");
+  // psychelement.onclick = psychreq;
+  //
+  // var econelement = document.getElementById("econe");
+  // econelement.onclick = econreq;
 
-  	console.log("requirements view loaded");
+
+  console.log("requirements view loaded");
   }
+
+  // function csreq(element) {
+// document.getElementById("department-name").textContent="Computer Science";
+// var csreqDisplay = getCSRequirementsDisplay("Computer Science");
+  //   // document.getElementById("courses").remove();
+// // assignCallbacks(element);
+// }
+  //
+  // function psychreq(element) {
+// document.getElementById("department-name").textContent="Psychological and Brain Sciences";
+// // document.getElementById("courses").remove();
+// var psychreqDisplay = getPRequirementsDisplay("Psychological and Brain Sciences");
+// // assignCallbacks(element);
+// }
+  //
+  // function econreq(element) {
+  //   document.getElementById("department-name").textContent="Economics";
+  //   // document.getElementById("courses").remove();
+  //
+  //   var econreqDisplay = getERequirementsDisplay("Economics");
+  //   assignCallbacks(element);
+  // }
 
 
 function getCSRequirementsDisplay(){
-	var Requirementscontainer = document.createElement("div");
-	// Requirementscontainer.classList.add('term-listing-container');
-	// var nameDisplay = document.createElement("span");
-	// var reqNode = document.createTextNode("Computer Science Major");
-	// nameDisplay.appendChild(reqNode);
-	// nameDisplay.classList.add("req-name");
-	// Requirementscontainer.appendChild(nameDisplay);
+var Requirementscontainer = document.getElementsByClassName("main-out-container")[0];
 
-  var reqsdisplay= document.createElement("div");
-  reqsdisplay.classList.add('req-listing-container');
+
+  var reqsdisplay= document.getElementsByClassName("first")[0];
+
   Requirementscontainer.appendChild(reqsdisplay);
 
-   var req1 = document.createElement("div");
-   req1.classList.add("course-box");
-   var req2 = document.createElement("div");
-   req2.classList.add("course-box");
-   var req3 = document.createElement("div");
-   req3.classList.add("course-box");
-   var req4 = document.createElement("div");
-   req4.classList.add("course-box");
-   var req5 = document.createElement("div");
-   req5.classList.add("course-box");
-   var req6 = document.createElement("div");
-   req6.classList.add("course-box");
+  var req1= document.getElementsByClassName("first-1")[0];
+  req1.textContent="Major";
 
-    var text1 = document.createTextNode("Prequisites COSC 1 and COSC 10");
-    req1.appendChild(text1);
-    var text2 = document.createTextNode("Two theory or algorithms courses (30-49)");
-    req2.appendChild(text2);
-    var text3 = document.createTextNode("Two systems or hardware courses (50-69)");
-    req3.appendChild(text3);
-    var text4 = document.createTextNode("Two applied computer science courses (70-89)");
-    req4.appendChild(text4);
-    var text5 = document.createTextNode("Three elective courses (drawn from 30-89)");
-    req5.appendChild(text5);
-    var text6 = document.createTextNode("Three elective courses (drawn from 30-89)");
-    req6.appendChild(text6);
+   var req1= document.getElementsByClassName("first-a")[0];
+   req1.textContent="Prerequisites COSC 1 and COSC 10";
 
-    reqsdisplay.appendChild(req1);
-    reqsdisplay.appendChild(req2);
-    reqsdisplay.appendChild(req3);
-    reqsdisplay.appendChild(req4);
-    reqsdisplay.appendChild(req5);
-    reqsdisplay.appendChild(req6);
+   var req2= document.getElementsByClassName("first-b")[0];
+   req2.textContent="Two theory or algorithms courses (30-49)";
+
+   var req3= document.getElementsByClassName("first-c")[0];
+   req3.textContent="Two systems or hardware courses (50-69)";
+
+   var req4= document.getElementsByClassName("first-d")[0];
+   req4.textContent="Two applied computer science courses (70-89)";
+
+   var req5= document.getElementsByClassName("first-e")[0];
+   req5.textContent="Three elective courses (drawn from 30-89)";
 
 
-  // var yesnodisplay = document.createElement("div");
-  // yesnodisplay.classList.add('term-listing-courses-container');
-  // reqcontainer.appendChild(yesnodisplay);
-  //
-  //  var req1 = document.createElement("div");
-  //  req1.classList.add("course-box");
-  //
-  //  var text1 = document.createTextNode("Yes");
-  //  req1.appendChild(text1);
-  //
-  //  yesnodisplay.appendChild(req1);
-  //
+//fufilled or not?
+   var reqsfulfilleddisplay= document.getElementsByClassName("second")[0];
+   Requirementscontainer.appendChild(reqsfulfilleddisplay);
 
-	return Requirementscontainer;
+   var fulreq1= document.getElementsByClassName("second-1")[0];
+
+
+   var fulreq1= document.getElementsByClassName("second-a")[0];
+   fulreq1.textContent="0/2";
+
+   var fulreq2= document.getElementsByClassName("second-b")[0];
+   fulreq2.textContent="0/2";
+
+   var fulreq3= document.getElementsByClassName("second-c")[0];
+   fulreq3.textContent="0/2";
+
+   var fulreq4= document.getElementsByClassName("second-d")[0];
+   fulreq4.textContent="0/2";
+
+   var fulreq5= document.getElementsByClassName("second-e")[0];
+   fulreq5.textContent="0/3";
+
+return Requirementscontainer;
 }
 
+
 function getPRequirementsDisplay(){
-  	var PRequirementscontainer = document.createElement("div");
 
-    var preqsdisplay= document.createElement("div");
-    preqsdisplay.classList.add('req-listing-container');
-    PRequirementscontainer.appendChild(preqsdisplay);
-
-    var preq1 = document.createElement("div");
-    preq1.classList.add("course-box");
-    var preq2 = document.createElement("div");
-    preq2.classList.add("course-box");
-    var preq3 = document.createElement("div");
-    preq3.classList.add("course-box");
-    var preq4 = document.createElement("div");
-    preq4.classList.add("course-box");
-    var preq5 = document.createElement("div");
-    preq5.classList.add("course-box");
-    var preq6 = document.createElement("div");
-    preq6.classList.add("course-box");
-    var preq7 = document.createElement("div");
-    preq7.classList.add("course-box");
-
-    var ptext1 = document.createTextNode("Prequisites Psych 1 and 10");
-    preq1.appendChild(ptext1);
-    var ptext2 = document.createTextNode("Psych 11");
-    preq2.appendChild(ptext2);
-    var ptext3 = document.createTextNode("One course from list of  PSYC 23, PSYC 24, PSYC 25");
-    preq3.appendChild(ptext3);
-    var ptext4 = document.createTextNode("one course from list of PSYC 21, PSYC 22, PSYC 27, PSYC 28");
-    preq4.appendChild(ptext4);
-    var ptext5 = document.createTextNode("At least one elective course numbered 50 or higher.");
-    preq5.appendChild(ptext5);
-    var ptext6 = document.createTextNode("A course number 60 or higher, but not numbered 88 or 89, which will serve as your Culminating Experience.");
-    preq6.appendChild(ptext6);
-    var ptext7 = document.createTextNode("Three additional elective courses numbered between PSYC 21 through PSYC 89");
-    preq7.appendChild(ptext7);
+  var PRRequirementscontainer = document.getElementsByClassName("main-out-container")[0];
 
 
-    preqsdisplay.appendChild(preq1);
-    preqsdisplay.appendChild(preq2);
-    preqsdisplay.appendChild(preq3);
-    preqsdisplay.appendChild(preq4);
-    preqsdisplay.appendChild(preq5);
-    preqsdisplay.appendChild(preq6);
-    preqsdisplay.appendChild(preq7);
+  var preqsdisplay= document.getElementsByClassName("first")[0];
+
+  PRRequirementscontainer.appendChild(preqsdisplay);
+
+  var preq1= document.getElementsByClassName("first-a")[0];
+  preq1.textContent="Prerequisites Psych 1 and 10";
+
+  var preq2= document.getElementsByClassName("first-b")[0];
+  preq2.textContent="Psych 11";
+
+  var preq3= document.getElementsByClassName("first-c")[0];
+  preq3.textContent="One course from list of  PSYC 23, PSYC 24, PSYC 25";
+
+  var preq4= document.getElementsByClassName("first-d")[0];
+  preq4.textContent="One course from list of PSYC 21, PSYC 22, PSYC 27, PSYC 28";
+
+  var preq5= document.getElementsByClassName("first-e")[0];
+  preq5.textContent="At least one elective course numbered 50 or higher.";
+  //
+  // var preq6= document.getElementsByClassName("first-f")[0];
+  // preq6.textContent="A course number 60 or higher, but not numbered 88 or 89, which will serve as your Culminating Experience.";
+  //
+  // var preq7= document.getElementsByClassName("first-g")[0];
+  // preq7.textContent="Three additional elective courses numbered between PSYC 21 through PSYC 89";
+
+
+  var prereqsfulfilleddisplay= document.getElementsByClassName("second")[0];
+  PRRequirementscontainer.appendChild(prereqsfulfilleddisplay);
+
+  var pfulreq1= document.getElementsByClassName("second-a")[0];
+  pfulreq1.textContent="0/2";
+
+  var pfulreq2= document.getElementsByClassName("second-b")[0];
+  pfulreq2.textContent="0/1";
+
+  var pfulreq3= document.getElementsByClassName("second-c")[0];
+  pfulreq3.textContent="0/1";
+
+  var pfulreq4= document.getElementsByClassName("second-d")[0];
+  pfulreq4.textContent="0/1";
+
+  var pfulreq5= document.getElementsByClassName("second-e")[0];
+  pfulreq5.textContent="0/1";
+  //
+  // var pfulreq6= document.getElementsByClassName("second-f")[0];
+  // pfulreq6.textContent="0/1";
+  //
+  // var pfulreq7= document.getElementsByClassName("second-g")[0];
+  // pfulreq7.textContent="0/3";
+
 
     return PRequirementscontainer;
 }
 
 
  function getERequirementsDisplay(){
-     	var eRequirementscontainer = document.createElement("div");
 
-      var ereqsdisplay= document.createElement("div");
-      ereqsdisplay.classList.add('req-listing-container');
-      eRequirementscontainer.appendChild(ereqsdisplay);
+   var ERequirementscontainer = document.getElementsByClassName("main-out-container")[0];
 
-      var ereq1 = document.createElement("div");
-      ereq1.classList.add("course-box");
-      var ereq2 = document.createElement("div");
-      ereq2.classList.add("course-box");
-      var ereq3 = document.createElement("div");
-      ereq3.classList.add("course-box");
-      var ereq4 = document.createElement("div");
-      ereq4.classList.add("course-box");
-      var ereq5 = document.createElement("div");
-      ereq5.classList.add("course-box");
-      var ereq6 = document.createElement("div");
-      ereq6.classList.add("course-box");
-      var ereq7 = document.createElement("div");
-      ereq7.classList.add("course-box");
+   var ereqsdisplay= document.getElementsByClassName("first")[0];
 
-      var etext1 = document.createTextNode("Prequisites Econ 1, 3 and 10");
-      ereq1.appendChild(etext1);
-      var etext2 = document.createTextNode(" Econ 20, 21 and 22");
-      ereq2.appendChild(etext2);
-      var etext3 = document.createTextNode(" Econ 20, 21 and 22");
-      ereq3.appendChild(etext3);
+   ERequirementscontainer.appendChild(ereqsdisplay);
 
-      ereqsdisplay.appendChild(ereq1);
-      ereqsdisplay.appendChild(ereq2);
-      ereqsdisplay.appendChild(ereq3);
+       var ereq1= document.getElementsByClassName("first-a")[0];
+       ereq1.textContent="Prerequisites: Econ 1,10 and Math 3";
 
-      return eRequirementscontainer;
+       var ereq2= document.getElementsByClassName("first-b")[0];
+       ereq2.textContent=" Econ 20, 21 and 22";
+
+       var ereq3= document.getElementsByClassName("first-c")[0];
+       ereq3.textContent=" Econ 20, 21 and 22";
+
+       var ereq4= document.getElementsByClassName("first-d")[0];
+       ereq4.textContent=" Econ 20, 21 and 22";
+
+
+       var ereqsfulfilleddisplay= document.getElementsByClassName("second")[0];
+       ERequirementscontainer.appendChild(ereqsfulfilleddisplay);
+
+       var ereq1= document.getElementsByClassName("second-a")[0];
+       ereq1.textContent="0/3";
+
+       var ereq2= document.getElementsByClassName("second-b")[0];
+       ereq2.textContent="0/3";
+
+       var ereq3= document.getElementsByClassName("second-c")[0];
+       ereq3.textContent="0/3";
+
+
+      return ERequirementscontainer;
  }
-

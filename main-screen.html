@@ -5,12 +5,12 @@
 <title> Course Planning </title>
 
 <style>
-   
+
     .section {
         width:33.3%;
         min-width:200px;
         height:100%;
-        max-height: 100%; 
+        max-height: 100%;
     }
 
     .divider {
@@ -41,8 +41,8 @@
 window.onload = function(){
 
     var screenSections = document.getElementsByClassName("section");
-    
-    // these functions are defined in the three scripts 
+
+    // these functions are defined in the three scripts
     // imported in the HTML above.
     var currentPlan = new CurrentPlan(screenSections[0]);
     currentPlan.showTerms(GetTermsForTesting());
@@ -51,7 +51,7 @@ window.onload = function(){
 
 }
 </script>
-</head> 
+</head>
 <body>
 <div class="section"></div>
 <div class="divider"></div>
@@ -75,55 +75,39 @@ window.onload = function(){
   </div>
 </div>
 <div class="divider"></div>
-<div class="section"></div>
-   
-<style>
-table {
-    width:80%;
-}
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    vertical-align: bottom;
-}
-th, td {
-    padding: 5px;
-    text-align: left;
-}
-</style>
-<div style="position: absolute; bottom: 30px; right:0" >
-<table >
-   <caption>Distributive Requirements</caption>
-  <tr>
-    <td>ART</td>
-    <td>INT</td>
-    <td>LIT</td>
+<div class="section">
 
-  </tr>
-  <tr>
-    <td>SOC</td>
-    <td>TMV</td>
-    <td>QDS</td>
+  <h3>Requirements</h3>
 
-  </tr>
-  <tr>
-    <td>TAS</td>
-    <td>TLA</td>
-    <td>SCI</td>
+  <div class="main-out-container">
 
-  </tr>
-  <tr>
-    <td>SLA</td>
-    <td>WESTERN</td>
-    <td>NONWESTERN</td>
-  </tr>
+    <div class="first">
+        <div class="first-1" ></div>
+        <div class="first-a" ></div>
+        <div class="first-b"></div>
+        <div class="first-c"></div>
+        <div class="first-d"></div>
+        <div class="first-e"></div>
 
-  <tr>
-        <td>Writing Requirements</td>
-        <td>Langugage</td>
-    <td>P.E.</td>
-  </tr>
-</table>
+        <div class= "main-distrib-container">
+            <!-- <div class="distrib-box1"></div>
+            <div class="distrib-box2"></div> -->
+        </div>
+
+
+    </div>
+    <div class="second">
+          <div class="second-1"></div>
+          <div class="second-a"></div>
+          <div class="second-b"></div>
+          <div class="second-c"></div>
+          <div class="second-d"></div>
+          <div class="second-e"></div>
+
+    </div>
+
+  </div>
+
 </div>
 
 </body>

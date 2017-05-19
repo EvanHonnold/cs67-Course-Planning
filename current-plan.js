@@ -6,6 +6,9 @@
 
 function CurrentPlan(screenSection){
 
+	// for testing:
+	loadCourses();
+
 	var currentPlan = this;
 	this.termDisplays = new Array();
 

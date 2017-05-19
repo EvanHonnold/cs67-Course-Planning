@@ -51,36 +51,26 @@ window.onload = function(){
 
 }
 </script>
-
 </head> 
-
 <body>
-    
 <div class="section"></div>
 <div class="divider"></div>
 <div class="section">
     <h1>Course Browser</h1>
     <div class="course-browser-container">
         <div class="department-dropdown-holder">
-            <span style="flex:1;">Department of Computer Science</span>
+            <span>Department of </span>
+            <span style="padding-left: 5px; flex:1">Computer Science</span>
             <button id="department-dropdown-button" onclick="toggleDeptDropdown()">    &#9660</button>
         </div>
         <div style="width:90%; position:relative;">
             <div id="department-dropdown-contents" >
                 <div style="margin-bottom:4px">Computer Science</div>
-                <div style="margin-bottom:4px">Psychological & Brain Sciences</div>
+                <div style="margin-bottom:4px">Psychological and Brain Sciences</div>
                 <div>Economics</div>
             </div>
         </div>
-
-        <div style="height:20px;"></div>
-    </div>
-  <div class="dropdown" id = dropdown>
-    <button class="dropbtn">Department    &#9660; <p id="department-name">Computer Science</p></button>
-    <div class="dropdown-content">
-      <div id="cse">Computer Science</div>
-      <div id="psyche">Psychological and Brain Sciences</div>
-      <div id="econe">Economics</div>
+        <div id="browser-class-listing-container"></div>
     </div>
   </div>
 </div>

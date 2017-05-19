@@ -64,7 +64,7 @@ and the classes listed under that term */
 }
 
 .course-box{
-    background-color: #C8E6C9;
+    background-color: #E0E0E0;
     white-space: nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -93,7 +93,7 @@ and the classes listed under that term */
 /* applied to course slots when the element in them 
    is being dragged but hasn't been put down yet */
 .dragged-course-slot {
-    background-color:#E8F5E9;
+    background-color:#FAFAFA;
 }
 
 .highlighted-course-slot {

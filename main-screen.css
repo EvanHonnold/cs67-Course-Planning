@@ -50,6 +50,7 @@ h2 {
 #department-dropdown-button{
     background-color:#BDBDBD;
     border:none;
+    outline:0;
 }
 
 #department-dropdown-contents{

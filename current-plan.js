@@ -35,6 +35,7 @@ function CurrentPlan(screenSection){
 		var slots = getCourseSlots();
 		for (var i = 0; i < slots.length; i++)
 			slots[i].notifyHoveringClass(mouseX, mouseY);
+		
 	}
 
 	/**

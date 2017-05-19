@@ -2,44 +2,33 @@ function toggleDeptDropdown(){
 	var menuContents = document.getElementById("department-dropdown-contents");
 	if (menuContents.style.display == "")
 		menuContents.style.display = "block";
-	else{
-		console.log(menuContents.style.display);
+	else
 		menuContents.style.display = "";
-		console.log("here");
-	}
-}
-
-
-function assignCallbacks(screenSection){
-	/*
-	var currSlots = screenSection.getElementsByClassName("course-slot");
-	for (var i = 0; i < currSlots.length; i++){
-		var mSlot = currSlots[i];
-		mSlot.onmouseup = function(event){
-			var mContent = mSlot.children[0].textContent;
-			console.log("Content:" + mContent);
-		}
-	}
-	*/
 }
 
 function generateCourseBrowser(element){
 
+	// assign callbacks to dropdown elements:
+	var container = document.getElementById("department-dropdown-contents");
+	for (var i = 0; i < container.children.length; i++){
+		container.children[i].onclick = makeDropdownClick(container.children[i]);
+	}
+	function makeDropdownClick(item){
+		return function(){
+			showDepartment(item.textContent);
+			toggleDeptDropdown();
+			var dropdownHeader = element.getElementsByClassName("department-dropdown-holder")[0];
+			dropdownHeader.children[1].textContent = item.textContent;
+		}
+	}
+
+	// populate the course listing with CS courses to start:
+	var deptName = element.getElementsByClassName("department-dropdown-holder")[0].children[1].textContent;	
+	showDepartment(deptName);
+
 	var cselement = document.getElementById("cse");
 	var psychelement = document.getElementById("psyche");
 	var econelement = document.getElementById("econe")
-
-	cselement.onclick = cs;
-	psychelement.onclick = psych;
-	econelement.onclick = econ;
-	var courses = document.createElement("div");
-	courses.id = "courseblock";
-	courses.classList.add('course-info-container');
-	element.appendChild(courses);
-
-	var majorDisplay = getMajorDepartment("Computer Science");
-	element.appendChild(majorDisplay);
-	assignCallbacks(element);
 
 	var info = document.createElement("div");
 	info.id = "popup";
@@ -77,38 +66,15 @@ function generateCourseBrowser(element){
 	info.appendChild(courseterm);
 	info.appendChild(courseprereqs);
 
-	console.log("course browser loaded");
 
-	function cs(element) {
-		document.getElementById("department-name").textContent="Computer Science";
-		document.getElementById("courses").remove();
-		var majorDisplay = getMajorDepartment("Computer Science");
-		assignCallbacks(element);
-	}
+	function showDepartment(department){
 
-	function psych(element) {
-		document.getElementById("department-name").textContent="Psychological and Brain Sciences";
-		document.getElementById("courses").remove();
-
-		var majorDisplay = getMajorDepartment("Psychological and Brain Sciences");
-		assignCallbacks(element);
-	}
-
-	function econ(element) {
-		document.getElementById("department-name").textContent="Economics";
-		document.getElementById("courses").remove();
-
-		var majorDisplay = getMajorDepartment("Economics");
-		assignCallbacks(element);
-	}
-
-	function getMajorDepartment(department){
-		var courses = document.getElementById('courseblock');
-		var coursesDisplay = document.createElement("div");
-		coursesDisplay.id = "courses"
-		coursesDisplay.classList.add('course-listing-course-container');
-		courses.appendChild(coursesDisplay);
+		var container = document.getElementById("browser-class-listing-container");
 		
+		// remove existing items from the container:
+		while(container.firstChild)
+			container.removeChild(container.firstChild);
+
 		var courses_dictionary = new Object();
 		courses_dictionary={ 
 		    "Computer Science":["COSC 1 - Intro to Programming and Computation","COSC 10 - Problem Solving via Object-Oriented Programming", "COSC 30 - Discrete Mathematics","COSC 31 - Algorithms", "COSC 35 - Data Stream Algorithms", "COSC 39 - Theory of Computation", "COSC 50 - Software Development and Implementation", "COSC 51 - Computer Architecture","COSC 67 - Introduction to Human-Computer Interaction","COSC 73 - Computational Linguistics","COSC 74 - Machine Learning and Statistical Data Analysis","COSC 87 - Rendering Algorithms"],    
@@ -119,17 +85,17 @@ function generateCourseBrowser(element){
 		var myStringArray = courses_dictionary[department];
 		var arrayLength = myStringArray.length;
 		for (var i = 0; i < arrayLength; i++) {
+
 			var course1 = document.createElement("div");
 			course1.classList.add("course-slot");
 			var text1 = document.createTextNode(myStringArray[i]);
 			course1.id = i;
 
-			// added by Evan (along with some changes above):
 			var courseBox = makeElemWithClass("div", "course-box");
 			course1.appendChild(courseBox);
 			courseBox.appendChild(text1);
 
-			coursesDisplay.appendChild(course1);
+			container.appendChild(course1);
 
 			// Evan: I wrote my own dragging code that can be used instead (more in current-plan.js):			
 
@@ -295,10 +261,9 @@ function generateCourseBrowser(element){
 
 		}
 
-		var courselist= document.getElementById("courses");
+		var courselist= document.getElementById("browser-class-listing-container");
 		var children = courselist.children;
 		for (var i = 0; i < children.length; i++) {
-			
 			
 			children[i].addEventListener("mouseover", function(){
 				var info = document.getElementById('popup');
@@ -389,9 +354,6 @@ function generateCourseBrowser(element){
 				info.style.display = 'none';
 			});*/
 		}
-			
-		return courses;
-
 	}
 
 }

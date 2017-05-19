@@ -56,6 +56,9 @@ var Requirementscontainer = document.getElementsByClassName("main-out-container"
   var req1= document.getElementsByClassName("first-1")[0];
   req1.textContent="Major";
 
+  var distributives= document.getElementsByClassName("first-2")[0];
+  distributives.textContent="Distributives and World Culture Requirement";
+
    var req1= document.getElementsByClassName("first-a")[0];
    req1.textContent="Prerequisites COSC 1 and COSC 10";
 

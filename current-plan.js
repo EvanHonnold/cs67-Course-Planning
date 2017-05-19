@@ -8,6 +8,10 @@ function CurrentPlan(screenSection){
 	var currentPlan = this;
 	this.termDisplays = new Array();
 
+	/// UNDER CONSTRUCTION:
+
+
+
 	//// NOTE: this is for testing - REMOVE WHEN DONE
 
 	/*
@@ -113,15 +117,20 @@ function CurrentPlan(screenSection){
 			this.filled = false;
 
 			// colors to represent the boxes' statuses:
-			var color_filled= "#BDBDBD";  // gray 400
+			var color_filled= "#C8E6C9";  // gray 400
 			var color_empty = "#E0E0E0";   // gray 300
 			var color_hover = "#EEEEEE";   // gray 200
 
 			////// Dynamic HTML Generation //////
-			this.courseBox = makeElemWithClass("div", "course-box");
+			this.courseBox = makeElemWithClass("div", "course-slot");
 			parentElement.appendChild(this.courseBox);
-			this.courseBox.textContent = "drop a course here";
-			colorElement(false);
+			var courseSlotBackground = makeElemWithClass("span", "course-slot-background");
+			this.courseBox.appendChild(courseSlotBackground);
+			courseSlotBackground.textContent = "drag and drop a course here";
+
+			//var testBox = makeElemWithClass("span", "course-box");
+			//this.courseBox.appendChild(testBox);
+			//testBox.textContent = "sdfgsdfgsdfg";
 
 			////// End of Dynamic HTML Generation //////
 
@@ -156,6 +165,7 @@ function CurrentPlan(screenSection){
 			}
 
 			function colorElement(hoveredOver){
+				/*
 				var color;
 				if (courseSlot.filled)
 					color = color_filled;
@@ -166,10 +176,116 @@ function CurrentPlan(screenSection){
 						color = color_empty;
 				}
 				courseSlot.courseBox.style.backgroundColor = color;
+				*/
+			}
+
+			var slot = courseSlot.courseBox;
+			slot.onmouseup = function(event){
+				if (draggedElement){
+					slot.children[0].style.display = "none";
+					slot.appendChild(draggedElement.children[0]);
+					draggedElement.remove();
+					draggedElement = null;
+				}
+
+			}
+			slot.onmousedown = function(event){
+				// check if there's a class in the slot:
+				var courseBoxes = slot.getElementsByClassName("course-box");
+				if (courseBoxes.length > 0){
+
+					// get the offset, so the dragged item appears in the right place
+					// relative to the cursor:
+					var rect = courseBoxes[0].getBoundingClientRect();
+
+					// create an html element to hold the course box while it's dragging:
+					var boxFloater = makeElemWithClass("div", "course-box-floater");
+					document.getElementsByTagName("body")[0].appendChild(boxFloater);
+					boxFloater.appendChild(courseBoxes[0]);
+
+					// store the offset inside the HTML element:
+					boxFloater.offsetX = rect.left - event.pageX;
+					boxFloater.offsetY = rect.top - event.pageY;
+
+					slot.classList.add("dragged-course-slot");
+
+					// allow the floater to move on mouse position change:
+					draggedElement = boxFloater;
+					document.addEventListener("mousemove", mouseMovedWhileDragging);
+					document.addEventListener("mouseup", mouseReleasedWhileDragging);
+				}
 			}
 		}
 	}
+
+
+
+	/// for testing click and drag
+	var testElem = makeElemWithClass("div", "course-box");
+	testElem.textContent = "sadgsdfgsdfgsd";
+	var testCont = makeElemWithClass("div", "course-box-floater");
+	document.getElementsByTagName("body")[0].appendChild(testCont);
+	testCont.appendChild(testElem);
+	draggedElement = testCont;
 }
+
+// globals for keeping track of click and drag:
+var draggedElement = null;
+
+// click and drag functions:
+function mouseMovedWhileDragging(event){
+	draggedElement.style.left = (event.pageX + draggedElement.offsetX) + "px";
+	draggedElement.style.top = (event.pageY + draggedElement.offsetY) + "px";
+	
+	var slots = document.getElementsByClassName("course-slot");
+	var dragBox = draggedElement.getBoundingClientRect();
+	var bestOverlap = 0;
+	var bestOverlapSlot = null;
+	for (var i = 0; i < slots.length; i++){
+		var boxes = slots[i].getElementsByClassName("course-box");
+		if (boxes.length == 0){ // if the slot is empty:
+			var currBox = slots[i].getBoundingClientRect();
+			var overlap = rectOverlap(dragBox, currBox);
+			if (overlap > bestOverlap){
+				bestOverlap = overlap;
+				bestOverlapSlot = slots[i];
+			}
+		}
+	}
+
+	for (var i = 0; i < slots.length; i++){
+		if (slots[i] === bestOverlapSlot)
+			slots[i].classList.add("highlighted-course-slot");
+		else
+			slots[i].classList.remove("highlighted-course-slot");
+	}
+}
+
+function mouseReleasedWhileDragging(event){
+	document.removeEventListener("mousemove", mouseMovedWhileDragging);
+	document.removeEventListener("mouseup", mouseReleasedWhileDragging);
+
+	// deselect the place where the dragged element came from:
+	var elems = document.getElementsByClassName("dragged-course-slot");
+	for (var i = 0; i < elems.length; i++){
+		elems[i].children[0].style.display = "";
+		elems[i].classList.remove("dragged-course-slot");
+	}
+
+	// check whether the element was dropped over an empty slot
+	var highlightedSlots = document.getElementsByClassName("highlighted-course-slot");
+	if (highlightedSlots.length == 1){
+		highlightedSlots[0].onmouseup(event);
+		highlightedSlots[0].classList.remove("highlighted-course-slot");
+	}
+
+	// if we got here, the element wasn't successfully dropped
+
+}
+
+
+
+//var elementBeingDragged = makeElemWithClass
 
 function makeElemWithText(tag, text){
 	var elem = document.createElement(tag);
@@ -192,6 +308,36 @@ function GetTermsForTesting(){
 	terms.push(new Term(new Season("fall"), new Number(2016)));
 	terms.push(new Term(new Season("winter"), new Number(2017)));
 	return terms;
+}
+
+
+// helper
+function rectOverlap(rect1, rect2){
+	var vert1 = {low:rect1.top, high:rect1.bottom};
+	var vert2 = {low:rect2.top, high:rect2.bottom};
+	var vertOverlap = rangeOverlap(vert1, vert2);
+	if (vertOverlap == 0)
+		return 0;
+	var horiz1 = {low:rect1.left, high:rect1.right};
+	var horiz2 = {low:rect2.left, high:rect2.right};
+	var horizOverlap = rangeOverlap(horiz1, horiz2);
+	if (horizOverlap == 0)
+		return 0;
+	return vertOverlap * horizOverlap;
+}
+function rangeOverlap(range1, range2){
+	var lowStart = range1;
+	if (range1.low > range2.low)
+		lowStart = range2;
+	var highStart = range1;
+	if (lowStart == range1)
+		highStart = range2;
+	overlap = 0;
+	if (highStart.high > lowStart.high)
+		overlap = Math.max(0, lowStart.high-highStart.low);
+	else
+		overlap = highStart.high - highStart.low;
+	return overlap;
 }
 
 /*

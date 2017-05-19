@@ -45,7 +45,7 @@ and the classes listed under that term */
 }
 
 .course-box{
-    /* background-color: #E0E0E0; */
+    background-color: #C8E6C9;
     white-space: nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -55,6 +55,38 @@ and the classes listed under that term */
     padding-bottom:2px;
     font-family: 'ApexNewBook',Arial,Sans-serif;
     font-size:85%;
+    flex:1;
+}
+
+.course-box-floater {
+    position:absolute;
+    width:300px;
+    height:20px;
+}
+
+.course-slot{
+    min-height:20px;
+    background-color:#EEEEEE;
+    display:flex;
+}
+
+/* applied to course slots when the element in them 
+   is being dragged but hasn't been put down yet */
+.dragged-course-slot {
+    background-color:#E8F5E9;
+}
+
+.highlighted-course-slot {
+    background-color: #FAFAFA;
+}
+
+.course-slot-background {
+    font-size:85%;
+    font-style:italic;
+    color: #9E9E9E;
+    display:inline-block;
+    vertical-align:middle;
+    padding-left:5px;
 }
 
 .course-box-divider {

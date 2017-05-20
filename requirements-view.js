@@ -251,7 +251,13 @@ function updateReqs(courselist){
       }
     } else if ( course.number > 29 && course.number < 50 ) {
       var element = document.getElementsByClassName("second-b")[0];
-      
+      if (element.textContent == "0/2")
+        element.textContent = "1/2";
+      else {
+        element.textContent = "2/2";
+        element.classList.remove("second-b");
+        element.classList.add("second-b1");
+      }
     }
 
 

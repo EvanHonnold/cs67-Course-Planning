@@ -366,6 +366,22 @@ h3 {
 
 }
 
+
+.second-a1{
+  background-color: #4CAF50;
+    flex:1;
+    width:auto;
+    margin-top: 3px;
+    padding-top: 3px;
+    height: 5px;
+    padding-bottom: 13px;
+    text-align: center;
+        font-family: 'ApexNewBook',Arial,Sans-serif;
+            font-size: 95%;
+
+}
+
+
 .second-b{
   background-color:#f08080;
     flex:1;

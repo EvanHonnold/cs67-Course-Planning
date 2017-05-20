@@ -239,48 +239,49 @@ function getpMinorDisplay(){
 function updateReqs(courselist){
   var arrayLength = courselist.length;
   for (var i = 0; i < arrayLength; i++) {
-  var number = course.name;
-  var reqs = ["second-a", "second-b", "second-c", "second-d", "second-e"];
-  reqDict = new Object();
-  reqDict = {"COSC 1 - Intro to Programming and Computation":["second-a"],
-              "COSC 10 - Problem Solving via Object-Oriented Programming":["second-a"],
-            "COSC 30 - Discrete Mathematics":["second-b", "second-e"],
-            "COSC 31 - Algorithms":["second-b", "second-e"],
-            "COSC 50 - Software Development and Implementation":["second-c", "second-e"],
-            "COSC 51 - Computer Architecture": ["second-c", "second-e"],
-            "COSC 39 - Theory of Computation":["second-b", "second-e"],
-            "COSC 67 - Introduction to Human-Computer Interaction":["second-c", "second-e"],
-            "COSC 73 - Computational Linguistics": ["second-d", "second-e"],
-            "COSC 74 - Machine Learning and Statistical Data Analysis": ["second-d", "second-e"],
-            "COSC 87 - Rendering Algorithms":["second-d", "second-e"],
-            "COSC 51 - Computer Architecture":["second-c", "second-e"],
-            "COSC 35 - Data Stream Algorithms":["second-b", "second-e"]
-  };
-
-  var length = reqs.length;
-  for (var j = 0; j < length; j++ ) {
-    var req = reqs[j];
-    var courselist = reqDict[course.name];
-    var arrayLength = courselist.length;
-    console.log(course.name);
-    for (var i = 0; i < arrayLength; i++) {
-      if (coursename == courselist[i]) {
-        var num = document.getElementsByClassName(req)[0].textContent.charAt(0).parseInt();
-        var newnum = num + 1;
-        if ( newnum != document.getElementsByClassName(req)[0].textContent.charAt(2).parseInt()) {
-          var csreq1 = document.getElementsByClassName(req)[0].textContent = "$newnum/2";
-          if ( newnum == document.getElementsByClassName(req)[0].textContent.charAt(2).parseInt()) {
-            var element = document.getElementByClassName(req)[0];
-            // change color
-            element.classList.add(req+"1");
-            element.classList.remove(req);
-          }
-        } else {
-          continue;
-        }
+    var course = courselist[i];
+    if ( course.number == 1 || course.number == 10 ) {
+      var element = document.getElementsByClassName("second-a")[0];
+      if (element.textContent == "0/2")
+        element.textContent = "1/2";
+      else {
+        element.textContent = "2/2";
+        element.classList.remove("second-a");
+        element.classList.add("second-a1");
       }
+    } else if ( course.number > 29 && course.number < 50 ) {
+      var element = document.getElementsByClassName("second-b")[0];
+      
     }
+
+
   }
+  // var reqs = ["second-a", "second-b", "second-c", "second-d", "second-e"];
+
+  // var length = reqs.length;
+  // for (var j = 0; j < length; j++ ) {
+  //   var req = reqs[j];
+  //   var courselist = reqDict[course.name];
+  //   var arrayLength = courselist.length;
+  //   console.log(course.name);
+  //   for (var i = 0; i < arrayLength; i++) {
+  //     if (coursename == courselist[i]) {
+  //       var num = document.getElementsByClassName(req)[0].textContent.charAt(0).parseInt();
+  //       var newnum = num + 1;
+  //       if ( newnum != document.getElementsByClassName(req)[0].textContent.charAt(2).parseInt()) {
+  //         var csreq1 = document.getElementsByClassName(req)[0].textContent = "$newnum/2";
+  //         if ( newnum == document.getElementsByClassName(req)[0].textContent.charAt(2).parseInt()) {
+  //           var element = document.getElementByClassName(req)[0];
+  //           // change color
+  //           element.classList.add(req+"1");
+  //           element.classList.remove(req);
+  //         }
+  //       } else {
+  //         continue;
+  //       }
+  //     }
+  //   }
+  // }
 
 }
 

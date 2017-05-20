@@ -6,9 +6,6 @@
 
 function CurrentPlan(screenSection){
 
-	// for testing:
-	loadCourses();
-
 	var currentPlan = this;
 	this.termDisplays = new Array();
 
@@ -28,37 +25,7 @@ function CurrentPlan(screenSection){
 		}
 	}
 
-	/**
-	 *  This function should be called whenever the mouse moves and a class
-	 *  is being dragged. The function will check through all the course slots 
-	 *  and check whether the mouse is over any of them.  If it is, that slot 
-	 *  will temporarily change color. 
-	 */
-	this.notifyHoveringClass = function(mouseX, mouseY){
-		var slots = getCourseSlots();
-		for (var i = 0; i < slots.length; i++)
-			slots[i].notifyHoveringClass(mouseX, mouseY);
-		
-	}
-
-	/**
-	 * 	This function should be called whenever a dragged class is dropped. 
-	 *  It'll check whether the mouse is over a slot.  If it is, the class 
-	 *  will be moved into the slot, and the function will return true. Otherwise, 
-	 *  the function will return false. 
-	 */
-	this.notifyDroppedClass = function(mouseX, mouseY, courseName){
-		var slots = getCourseSlots();
-		for (var i = 0; i < slots.length; i++){
-			var dropSuccess = slots[i].notifyDroppedClass(mouseX, mouseY, courseName);
-			if (dropSuccess) {
-				console.log("Here")
-				updateDistribs("tla");
-				return true;
-			}
-		}
-		return false;
-	}
+	// example of Tim's function call: 	updateDistribs("tla");
 
 	// local helper function
 	function getCourseSlots(){
@@ -119,48 +86,15 @@ function CurrentPlan(screenSection){
 		/////////// END of HTML GENERATION ////////////////
 
 		function CourseSlot(parentElement){
-			var courseSlot = this;
-			this.filled = false;
-
-			// colors to represent the boxes' statuses:
-			var color_filled= "#C8E6C9";  // gray 400
-			var color_empty = "#E0E0E0";   // gray 300
-			var color_hover = "#EEEEEE";   // gray 200
 
 			////// Dynamic HTML Generation //////
-			this.courseBox = makeElemWithClass("div", "course-slot");
-			parentElement.appendChild(this.courseBox);
+			var courseSlot = makeElemWithClass("div", "course-slot");
+			parentElement.appendChild(courseSlot);
 			var courseSlotBackground = makeElemWithClass("span", "course-slot-background");
-			this.courseBox.appendChild(courseSlotBackground);
+			courseSlot.appendChild(courseSlotBackground);
 			courseSlotBackground.textContent = "drag and drop a course here";
 
-			//var testBox = makeElemWithClass("span", "course-box");
-			//this.courseBox.appendChild(testBox);
-			//testBox.textContent = "sdfgsdfgsdfg";
-
 			////// End of Dynamic HTML Generation //////
-
-			this.notifyHoveringClass = function(mouseX, mouseY){
-				if (inBounds(mouseX, mouseY))
-					colorElement(true);
-				else
-					colorElement(false);
-			}
-
-			this.notifyDroppedClass = function(mouseX, mouseY, courseName){
-				if (!inBounds(mouseX, mouseY))
-					return false;
-				else {
-					if (this.filled)
-						return false;
-					else {
-						courseSlot.courseBox.textContent = courseName;
-						courseSlot.filled = true;
-						colorElement(false);
-						return true;
-					}
-				}
-			}
 
 			function inBounds(x, y){
 				var bounds = courseSlot.courseBox.getBoundingClientRect();
@@ -169,36 +103,19 @@ function CurrentPlan(screenSection){
 				else
 					return false;
 			}
-
-			function colorElement(hoveredOver){
-				/*
-				var color;
-				if (courseSlot.filled)
-					color = color_filled;
-				else {
-					if (hoveredOver)
-						color = color_hover;
-					else
-						color = color_empty;
-				}
-				courseSlot.courseBox.style.backgroundColor = color;
-				*/
-			}
-
-			var slot = courseSlot.courseBox;
 			
-			slot.onmouseup = function(event){
+			courseSlot.onmouseup = function(event){
 				if (draggedElement){
-					slot.children[0].style.display = "none";
-					slot.appendChild(draggedElement.children[0]);
+					courseSlot.children[0].style.display = "none";
+					courseSlot.appendChild(draggedElement.children[0]);
 					draggedElement.remove();
 					draggedElement = null;
 				}
 			}
 			
-			slot.onmousedown = function(event){
+			courseSlot.onmousedown = function(event){
 				// check if there's a class in the slot:
-				var courseBoxes = slot.getElementsByClassName("course-box");
+				var courseBoxes = courseSlot.getElementsByClassName("course-box");
 				if (courseBoxes.length > 0){
 
 					// get the offset, so the dragged item appears in the right place
@@ -216,7 +133,7 @@ function CurrentPlan(screenSection){
 					boxFloater.offsetX = rect.left - event.pageX;
 					boxFloater.offsetY = rect.top - event.pageY;
 
-					slot.classList.add("dragged-course-slot");
+					courseSlot.classList.add("dragged-course-slot");
 
 					// allow the floater to move on mouse position change:
 					draggedElement = boxFloater;

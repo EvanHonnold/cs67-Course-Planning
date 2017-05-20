@@ -258,6 +258,24 @@ function updateReqs(courselist){
         element.classList.remove("second-b");
         element.classList.add("second-b1");
       }
+    } else if ( course.number > 49 && course.number < 70 ) {
+      var element = document.getElementsByClassName("second-c")[0];
+      if (element.textContent == "0/2")
+        element.textContent = "1/2";
+      else {
+        element.textContent = "2/2";
+        element.classList.remove("second-c");
+        element.classList.add("second-c1");
+      }
+    } else if (course.number > 69 && course.number < 90 ) {
+      var element = document.getElementsByClassName("second-d")[0];
+      if (element.textContent == "0/2")
+        element.textContent = "1/2";
+      else {
+        element.textContent = "2/2";
+        element.classList.remove("second-d");
+        element.classList.add("second-d1");
+      }
     }
 
 

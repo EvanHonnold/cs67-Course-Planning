@@ -204,6 +204,7 @@ function mouseReleasedWhileDragging(event){
 
 		}
 		updateDistribs(courselist);
+		updateReqs(courselist);
 
 	}
 	else {

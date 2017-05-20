@@ -242,39 +242,50 @@ function updateReqs(courselist){
     var course = courselist[i];
     if ( course.number == 1 || course.number == 10 ) {
       var element = document.getElementsByClassName("second-a")[0];
-      if (element.textContent == "0/2")
-        element.textContent = "1/2";
-      else {
-        element.textContent = "2/2";
-        element.classList.remove("second-a");
-        element.classList.add("second-a1");
+      console.log(element);
+      if (element){
+        if (element.textContent == "0/2")
+          element.textContent = "1/2";
+        else {
+          element.textContent = "2/2";
+          element.classList.remove("second-a");
+          element.classList.add("second-a1");
+        }
       }
     } else if ( course.number > 29 && course.number < 50 ) {
-      var element = document.getElementsByClassName("second-b")[0];
-      if (element.textContent == "0/2")
-        element.textContent = "1/2";
-      else {
-        element.textContent = "2/2";
-        element.classList.remove("second-b");
-        element.classList.add("second-b1");
+      if (element) {
+        var element = document.getElementsByClassName("second-b")[0];
+        if (element.textContent == "0/2")
+          element.textContent = "1/2";
+        else {
+          element.textContent = "2/2";
+          element.classList.remove("second-b");
+          element.classList.add("second-b1");
+        }
       }
     } else if ( course.number > 49 && course.number < 70 ) {
-      var element = document.getElementsByClassName("second-c")[0];
-      if (element.textContent == "0/2")
-        element.textContent = "1/2";
-      else {
-        element.textContent = "2/2";
-        element.classList.remove("second-c");
-        element.classList.add("second-c1");
+      if (element) {
+        var element = document.getElementsByClassName("second-c")[0];
+        if (element.textContent == "0/2")
+          element.textContent = "1/2";
+        else if (element.textContent == "1/2") {
+          element.textContent = "2/2";
+          element.classList.remove("second-c");
+          element.classList.add("second-c1");
+        } else {
+          increaseElective();
+        }
       }
     } else if (course.number > 69 && course.number < 90 ) {
-      var element = document.getElementsByClassName("second-d")[0];
-      if (element.textContent == "0/2")
-        element.textContent = "1/2";
-      else {
-        element.textContent = "2/2";
-        element.classList.remove("second-d");
-        element.classList.add("second-d1");
+      if(element) {
+        var element = document.getElementsByClassName("second-d")[0];
+        if (element.textContent == "0/2")
+          element.textContent = "1/2";
+        else {
+          element.textContent = "2/2";
+          element.classList.remove("second-d");
+          element.classList.add("second-d1");
+        }
       }
     }
 
@@ -323,6 +334,21 @@ function updateDistribs(courselist){
         distribbox.classList.add('distrib-box2');
         distribbox.classList.remove('distrib-box1');
       }
+    }
+  }
+}
+
+function increaseElective() {
+  var element = document.getElementsByClassName("second-e")[0];
+  if (element) {
+    if (element.textContent == "0/2")
+      element.textContent = "1/2";
+    else if (element.textContent == "1/2" ) {
+      element.textContent = "2/2";
+    } else {
+      element.textContent = "3/3";
+      element.classList.remove("second-e");
+      element.classList.add("second-e1");
     }
   }
 }

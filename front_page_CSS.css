@@ -42,3 +42,33 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+h1 {
+    color: #333;
+    font-size: 160%;
+    font-family: 'ApexSerifBook','Georgia', serif;
+    font-weight: normal;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+  }
+
+h2{
+  color: #333;
+  font-size: 140%;
+  font-family: 'ApexSerifBook','Georgia', serif;
+  font-weight: normal;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+h4{
+  color: #333;
+  font-size: 120%;
+  font-family: 'ApexSerifBook','Georgia', serif;
+  font-weight: normal;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}

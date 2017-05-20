@@ -23,7 +23,7 @@ function storeValue(obj){
     if(obj.selectedIndex == 0){return;}
     var major = obj.value;
     console.log('saves');
-    alert('Selected Is:  '+ major);
+    // alert('Selected Is:  '+ major);
 }
   window.onload = function(){
   document.getElementsByName('Majors')[0].onchange=function(){storeValue(this);}

@@ -236,7 +236,9 @@ function getpMinorDisplay(){
 
     return minorcontainer;
 }
-function updateReqs(course){
+function updateReqs(courselist){
+  var arrayLength = courselist.length;
+  for (var i = 0; i < arrayLength; i++) {
   var number = course.name;
   var reqs = ["second-a", "second-b", "second-c", "second-d", "second-e"];
   reqDict = new Object();
@@ -285,13 +287,17 @@ function updateReqs(course){
 
 // update distribs - loops over all distribs a course satisfies (must be lowercase abbreviation as seen in main-screen.html (id's for distribs)
 //and changes color to green
-function updateDistribs(distriblist){
-  var arrayLength = distriblist.length;
+function updateDistribs(courselist){
+  var arrayLength = courselist.length;
   for (var i = 0; i < arrayLength; i++) {
-    var distrib = distriblist[i];
-    var element = document.getElementById(distrib);
-    // change color
-    element.classList.add('distrib-box2');
-    element.classList.remove('distrib-box1');
+    var distrib = courselist[i].distribs;
+    var boxes = document.getElementsByClassName("distrib-box1");
+    for ( var j = 0; j < boxes.length; j++ ) {
+      var distribbox = boxes[j];
+      if (distribbox.textContent == distrib ) {
+        distribbox.classList.add('distrib-box2');
+        distribbox.classList.remove('distrib-box1');
+      }
+    }
   }
 }

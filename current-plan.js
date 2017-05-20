@@ -195,6 +195,16 @@ function mouseReleasedWhileDragging(event){
 			initSlot.children[0].style.display = "";
 
 		highlightedSlots[0].classList.remove("highlighted-course-slot");
+
+		// check distributives
+		var courses = document.getElementsByClassName("section")[0].getElementsByClassName("course-box");
+		var courselist = new Array();
+		for ( var i = 0; i < courses.length; i++ ) {
+			courselist.push(courses[i].course);
+
+		}
+		updateDistribs(courselist);
+
 	}
 	else {
 		// if we got here, the element wasn't successfully dropped,
@@ -251,6 +261,7 @@ function rectOverlap(rect1, rect2){
 		return 0;
 	return vertOverlap * horizOverlap;
 }
+
 function rangeOverlap(range1, range2){
 	var lowStart = range1;
 	if (range1.low > range2.low)
